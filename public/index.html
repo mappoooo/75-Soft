@@ -10,8 +10,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#7C5C82">
 <link rel="apple-touch-icon" href="/icon.png">
-   <link rel="icon" href="/icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="icon" href="/icon.png"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
@@ -312,6 +311,9 @@
   .obBtn{ width:100%; padding:14px; border-radius:999px; background: var(--plum); color:#fff; font-weight:600; font-size:14.5px; transition: background .15s, opacity .15s; }
   .obBtn:hover{ background: var(--plum-deep); }
   .obBtn:disabled{ opacity:0.4; cursor:not-allowed; }
+  .obLinkBtn{ display:block; width:100%; text-align:center; margin-top:14px; font-family: var(--font-mono); font-size:12px; color: var(--muted); text-decoration:underline; }
+  .obLinkBtn:hover{ color: var(--plum-deep); }
+  .obError{ font-size:12.5px; color: var(--berry); margin: -6px 0 14px; line-height:1.4; }
   .obField{ margin-bottom:16px; }
   .obField label{ display:block; font-family: var(--font-mono); font-size:11.5px; letter-spacing:.03em; margin-bottom:6px; color: var(--muted); }
   .obField input[type=text]{ width:100%; padding:13px 14px; border-radius: var(--radius-sm); border:1px solid var(--line); font-size:15px; background: var(--paper); color: var(--ink); }
@@ -422,6 +424,8 @@
     </ul>
     <h3>Why steps are manual</h3>
     <p>A web app like this one can't be granted access to Apple Health or an Apple Watch — that data is locked to Apple's own Health app and apps you've specifically approved on your phone. Log your count from your Watch or Health app each day; it takes five seconds.</p>
+    <h3>Your PIN</h3>
+    <p>Your house lives on the server, not just your phone, so it's safe even if your phone loses its memory of the site. If that happens, just tap "Already on Soft Street? Log back in" on the welcome screen and enter the name and PIN you signed up with.</p>
     <h3>Soft Street</h3>
     <p>Every person on the challenge gets a little house, with the cat or dog they picked at sign-up sitting proudly on the roof. Make progress and the window flickers gold. Finish everything and it glows fully — everyone can see it, nobody can touch it but you. At the top you'll also see who's holding the longest streak and who's been most consistent this week.</p>
     <h3>Nudges</h3>
@@ -706,20 +710,35 @@
     return count;
   }
 
+  // ---------- versioned key helpers ----------
+  // DATA_VERSION lets us cleanly separate this identity system from any earlier
+  // test data — nothing needs to be manually deleted, old keys are just unused.
+  const DATA_VERSION = 'v2';
+  function profileKey(id, suffix){ return DATA_VERSION + '-user:' + id + ':' + suffix; }
+  function loginKey(name, pin){ return DATA_VERSION + '-login:' + normalizeName(name) + ':' + pin; }
+  function normalizeName(name){ return String(name).trim().toLowerCase().replace(/\s+/g, ''); }
+
   // ---------- boot ----------
   async function boot(){
     await loadTheme();
-    const p = await sJSON('profile', false, null);
-    if(!p || !p.agreedTerms || !p.name){
-      renderOnboarding();
-      showScreen('onboarding');
-      return;
+    const myId = (function(){ try{ return localStorage.getItem(LS_PREFIX + 'myid'); }catch(e){ return null; } })();
+    if(myId){
+      const p = await sJSON(profileKey(myId, 'profile'), true, null);
+      if(p && p.agreedTerms && p.name){
+        profile = p;
+        myDays = await sJSON(profileKey(myId, 'my-days'), true, {});
+        showScreen('main');
+        initMain();
+        maybeShowFunMessage();
+        return;
+      }
     }
-    profile = p;
-    myDays = await sJSON('my-days', false, {});
-    showScreen('main');
-    initMain();
-    maybeShowFunMessage();
+    renderOnboarding();
+    showScreen('onboarding');
+  }
+
+  function rememberMyId(id){
+    try{ localStorage.setItem(LS_PREFIX + 'myid', id); }catch(e){ /* ignore */ }
   }
 
   function showScreen(which){
@@ -808,6 +827,7 @@
           <label for="agreeCheck">I solemnly swear I will try, and I accept mild public shaming in the group chat if my window stays dark.</label>
         </div>
         <button class="obBtn" id="continueBtn" disabled type="button">Continue</button>
+        <button class="obLinkBtn" id="loginLinkBtn" type="button">Already on Soft Street? Log back in</button>
       </div>
     `;
     document.getElementById('obThemeBtn').addEventListener('click', toggleTheme);
@@ -815,6 +835,60 @@
       document.getElementById('continueBtn').disabled = !e.target.checked;
     });
     document.getElementById('continueBtn').addEventListener('click', renderNameStep);
+    document.getElementById('loginLinkBtn').addEventListener('click', renderLoginStep);
+  }
+
+  function renderLoginStep(){
+    const el = document.getElementById('onboarding');
+    el.innerHTML = `
+      <button class="iconBtn obThemeBtn" id="obThemeBtn" type="button" aria-label="Toggle dark mode">🌙</button>
+      <div class="obCard" id="obLoginStep">
+        <h1>Welcome back.</h1>
+        <div class="obSub">LOG BACK INTO YOUR HOUSE</div>
+        <div class="obField">
+          <label for="loginName">Your name (exactly as you signed up)</label>
+          <input type="text" id="loginName" maxlength="24" placeholder="e.g. Sam" autocomplete="off" />
+        </div>
+        <div class="obField">
+          <label for="loginPin">Your 4-digit PIN</label>
+          <input type="text" id="loginPin" maxlength="4" inputmode="numeric" placeholder="••••" autocomplete="off" />
+        </div>
+        <p class="obError" id="loginError" hidden>Couldn't find that name + PIN combo. Double-check both, or sign up fresh below.</p>
+        <button class="obBtn" id="loginSubmitBtn" type="button">Log in</button>
+        <button class="obLinkBtn" id="backToSignupBtn" type="button">Back to sign up</button>
+      </div>
+    `;
+    document.getElementById('obThemeBtn').addEventListener('click', toggleTheme);
+    document.getElementById('backToSignupBtn').addEventListener('click', renderOnboarding);
+    document.getElementById('loginSubmitBtn').addEventListener('click', async ()=>{
+      const name = document.getElementById('loginName').value.trim();
+      const pin = document.getElementById('loginPin').value.trim();
+      const errorEl = document.getElementById('loginError');
+      errorEl.hidden = true;
+      if(!name || !/^\d{4}$/.test(pin)){
+        errorEl.textContent = 'Enter your name and a 4-digit PIN.';
+        errorEl.hidden = false;
+        return;
+      }
+      const id = await sGet(loginKey(name, pin), true);
+      if(!id){
+        errorEl.textContent = "Couldn't find that name + PIN combo. Double-check both, or sign up fresh below.";
+        errorEl.hidden = false;
+        return;
+      }
+      const p = await sJSON(profileKey(id, 'profile'), true, null);
+      if(!p){
+        errorEl.textContent = "Found the login, but couldn't load your house. Try again in a moment.";
+        errorEl.hidden = false;
+        return;
+      }
+      rememberMyId(id);
+      profile = p;
+      myDays = await sJSON(profileKey(id, 'my-days'), true, {});
+      showScreen('main');
+      initMain();
+      maybeShowFunMessage();
+    });
   }
 
   function renderNameStep(){
@@ -827,6 +901,11 @@
         <div class="obField">
           <label for="nameInput">What should we call you on Soft Street?</label>
           <input type="text" id="nameInput" maxlength="24" placeholder="e.g. Sam" autocomplete="off" />
+        </div>
+        <div class="obField">
+          <label for="pinInput">Set a 4-digit PIN</label>
+          <input type="text" id="pinInput" maxlength="4" inputmode="numeric" placeholder="e.g. 4271" autocomplete="off" />
+          <p class="stepsNote" style="margin-top:6px;">This isn't real security — it's just so you can get back into your house if your phone ever forgets you. Pick something you'll remember.</p>
         </div>
         <div class="obField">
           <label>Who's sitting on your roof?</label>
@@ -842,6 +921,7 @@
           </div>
           <button class="switch" id="doubleSwitch" type="button" role="switch" aria-checked="false" aria-label="Double session toggle"></button>
         </div>
+        <p class="obError" id="signupError" hidden></p>
         <button class="obBtn" id="startBtn" disabled type="button">Move in to Soft Street</button>
       </div>
     `;
@@ -850,9 +930,13 @@
     let doubleOn = false;
     let petChoice = 'dog';
     const nameInput = document.getElementById('nameInput');
+    const pinInput = document.getElementById('pinInput');
     const startBtn = document.getElementById('startBtn');
-    function checkValid(){ startBtn.disabled = nameInput.value.trim().length === 0; }
+    function checkValid(){
+      startBtn.disabled = nameInput.value.trim().length === 0 || !/^\d{4}$/.test(pinInput.value.trim());
+    }
     nameInput.addEventListener('input', checkValid);
+    pinInput.addEventListener('input', checkValid);
     nameInput.focus();
     document.querySelectorAll('.petOption').forEach(btn=>{
       btn.addEventListener('click', ()=>{
@@ -867,14 +951,31 @@
     });
     startBtn.addEventListener('click', async ()=>{
       const name = nameInput.value.trim().slice(0,24);
-      if(!name) return;
+      const pin = pinInput.value.trim();
+      const errorEl = document.getElementById('signupError');
+      errorEl.hidden = true;
+      if(!name || !/^\d{4}$/.test(pin)) return;
+
       startBtn.disabled = true;
+      startBtn.textContent = 'Checking your details…';
+      const lKey = loginKey(name, pin);
+      const existing = await sGet(lKey, true);
+      if(existing){
+        errorEl.textContent = "That name + PIN combo is already taken on this street. Try a different PIN, or add your last initial to your name.";
+        errorEl.hidden = false;
+        startBtn.disabled = false;
+        startBtn.textContent = 'Move in to Soft Street';
+        return;
+      }
+
       startBtn.textContent = 'Setting up your house…';
       const id = (crypto.randomUUID ? crypto.randomUUID() : 'id-' + Date.now() + '-' + Math.random().toString(16).slice(2));
       profile = { id, name, doubleSession: doubleOn, pet: petChoice, joinedDate: todayKey(), agreedTerms: true };
       myDays = {};
-      await sSetJSON('profile', profile, false);
-      await sSetJSON('my-days', myDays, false);
+      await sSetJSON(profileKey(id, 'profile'), profile, true);
+      await sSetJSON(profileKey(id, 'my-days'), myDays, true);
+      await sSet(lKey, id, true);
+      rememberMyId(id);
       await registerOnStreet();
       showScreen('main');
       initMain();
@@ -883,10 +984,10 @@
   }
 
   async function registerOnStreet(){
-    const idx = await sJSON('board-index', true, {ids:[]});
+    const idx = await sJSON('v2-board-index', true, {ids:[]});
     if(!idx.ids.includes(profile.id)){
       idx.ids.push(profile.id);
-      await sSetJSON('board-index', idx, true);
+      await sSetJSON('v2-board-index', idx, true);
     }
     await writeBoardEntry();
   }
@@ -906,7 +1007,7 @@
       weekCount: computeWeekCount(),
       updatedAt: Date.now()
     };
-    await sSetJSON('board:' + profile.id, entry, true);
+    await sSetJSON('v2-board:' + profile.id, entry, true);
   }
 
   // ---------- MAIN ----------
@@ -1085,7 +1186,7 @@
     const dKey = todayKey();
     if(!myDays[dKey]) myDays[dKey] = {};
     myDays[dKey][key] = !myDays[dKey][key];
-    await sSetJSON('my-days', myDays, false);
+    await sSetJSON(profileKey(profile.id, 'my-days'), myDays, true);
     renderToday();
     writeBoardEntry();
   }
@@ -1095,7 +1196,7 @@
     if(!myDays[dKey]) myDays[dKey] = {};
     const num = Math.max(0, parseInt(value, 10) || 0);
     myDays[dKey].steps = num;
-    await sSetJSON('my-days', myDays, false);
+    await sSetJSON(profileKey(profile.id, 'my-days'), myDays, true);
     renderToday();
     writeBoardEntry();
   }
@@ -1104,13 +1205,13 @@
     const dKey = todayKey();
     if(!myDays[dKey]) myDays[dKey] = {};
     myDays[dKey].note = value.slice(0, 280);
-    await sSetJSON('my-days', myDays, false);
+    await sSetJSON(profileKey(profile.id, 'my-days'), myDays, true);
     // no re-render / board write needed — this is private and doesn't affect completion
   }
 
   async function onToggleDoubleSession(){
     profile.doubleSession = !profile.doubleSession;
-    await sSetJSON('profile', profile, false);
+    await sSetJSON(profileKey(profile.id, 'profile'), profile, true);
     renderToday();
     writeBoardEntry();
   }
@@ -1132,7 +1233,7 @@
   }
 
   async function loadAndRenderStreet(){
-    const idx = await sJSON('board-index', true, {ids:[]});
+    const idx = await sJSON('v2-board-index', true, {ids:[]});
     const wrap = document.getElementById('skylineWrap');
     const statsWrap = document.getElementById('streetStats');
     if(!wrap) return;
@@ -1143,7 +1244,7 @@
     }
     const today = todayKey();
     const entries = await Promise.all(idx.ids.map(async id => {
-      const e = await sJSON('board:' + id, true, null);
+      const e = await sJSON('v2-board:' + id, true, null);
       return {id, e};
     }));
     const valid = entries.filter(x => x.e);
@@ -1168,7 +1269,7 @@
     }
 
     // ---- nudge state for today ----
-    const nudgeMap = await sJSON('nudges-' + today, true, {});
+    const nudgeMap = await sJSON('v2-nudges-' + today, true, {});
 
     wrap.innerHTML = valid.map(({id,e})=>{
       const isToday = e.date === today;
@@ -1199,14 +1300,14 @@
 
   async function sendNudge(toId, toName, btnEl){
     if(!profile || toId === profile.id) return;
-    const dayKey = 'nudges-' + todayKey();
+    const dayKey = 'v2-nudges-' + todayKey();
     const map = await sJSON(dayKey, true, {});
     const pairKey = profile.id + '_' + toId;
     if(map[pairKey]) return;
     map[pairKey] = true;
     if(btnEl){ btnEl.disabled = true; btnEl.textContent = 'nudged ✓'; }
     await sSetJSON(dayKey, map, true);
-    const list = await sJSON('chat-messages', true, []);
+    const list = await sJSON('v2-chat-messages', true, []);
     list.push({
       id: Date.now() + '-' + Math.random().toString(16).slice(2),
       userId: profile.id,
@@ -1216,7 +1317,7 @@
       ts: Date.now()
     });
     while(list.length > MAX_CHAT) list.shift();
-    await sSetJSON('chat-messages', list, true);
+    await sSetJSON('v2-chat-messages', list, true);
     if(activePanel === 'chat') loadAndRenderChat(true);
   }
 
@@ -1391,7 +1492,7 @@
   }
 
   async function sendMessage(msg){
-    const list = await sJSON('chat-messages', true, []);
+    const list = await sJSON('v2-chat-messages', true, []);
     list.push({
       id: Date.now() + '-' + Math.random().toString(16).slice(2),
       userId: profile.id,
@@ -1401,14 +1502,14 @@
       ts: Date.now()
     });
     while(list.length > MAX_CHAT) list.shift();
-    await sSetJSON('chat-messages', list, true);
+    await sSetJSON('v2-chat-messages', list, true);
     loadAndRenderChat(true);
   }
 
   async function loadAndRenderChat(forceScroll){
     const log = document.getElementById('chatLog');
     if(!log) return;
-    const list = await sJSON('chat-messages', true, []);
+    const list = await sJSON('v2-chat-messages', true, []);
     if(list.length === lastChatRenderCount && !forceScroll) return;
     lastChatRenderCount = list.length;
     if(list.length === 0){

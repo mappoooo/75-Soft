@@ -1,0 +1,9 @@
+{
+  "name": "75-soft-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "75 Soft group habit tracker, deployed on Netlify with Netlify Blobs for shared data.",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}

@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+<title>75 SOFT</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="75 Soft">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#7C5C82">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAEZklEQVR4nO3dQY7TQBCFYYM4GjuuwJJjsOIcXIMdh2PRUoQmeYmTdFW9rv6/9TC2u/+UzUST+fTz+68DuOVz9QnAF3FAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCB9qT6BMj++/T3/xb//fI07E1sbxfFUDff/7Sat9I/jnSYefs/elbSNI6KJO0dpWUm3OHKauHPcTpX0ieOFLE5u5FPfeXxxj0Q+Nfhd2fObN2XPkg9XaO04zuxT6A6Vn0CoheO4vzHJW2J1MrMsGYftTtie2GvWi+POBpisvv8ZnrRSHGst+lpne9Mycai1Nl/oRU97WONd2XWXWJ1h1Q/rnrLA5Li5jv5ZfLDiVVjHse7AuGm5y/G9rSy3lA8td4sxnRwrDuHzVrk6x8mxytq97Oa1GM4PuzjalzEs0YdXHJuUMfj3YRTHVmUM5n24xLFhGYNzHy5xXNuhjMH2Si3iuH6h2K5XkOvrdRge9XFQxmDYR3EclPE/tz4q46CMa1Z91N9WYKssDsaG4jM8at548ynj4br7nFj+mRTE4XDZcb8eN1H5QvX5dcgzpnwKwz63v+zJUfVqmH7brjrtzDSL/7eyaBlB3/Na7ZRKjaPkqTvuoM0u51rebSV/QqatY/6F5EyUsttKmzISjlV1c0mKI3kC5w/8lhdYMznKPzNjueOWDI+MOMrfem4pYVULJkfLsZFw9PzhER5HpwdDt3OIPlb25IjL36GMIe5MkodHbBw+G9ZV6AqnTo4dxsbQY3gExuG2YV3FrXPe5Njnne5oaSsZFUenh/bXNFiBpMnB2Jir+Rtv8BcSR+bfNfK8pwyZPzCNOBaTA9L8OJxfyr1NX/nwycGjaJzoteW2AmlyHNxTas1d/9jJwT0lWugKc1uBNDMO7ikOJu5C4OTgnpIjbp25rUBaPg7n+eR8bmdMiyPz/RR8EPQ+y/KTA3E6xOE5pTzP6ikd4kCQOXHwwFEu4rGjyeRwy9HtfF7TJA5E6BOHz4vV50zeNCEOnwcOh13xufz3Hzv6TI6htg+HOifqFgcmahhH1cu32dg4WsZxVOxTvzKOrnEcubvVsozj/Q+p9fmvitLsc7oemrgjbSfHRdz+GZYxV/84jphdbF/Gsc/fWxl7OeUWs0MWwy5xDJd9XeIvNZXbK46L85Vs2MTFpnFc7Lz3D23xQIrXvBWH/w85NjTxvVkmByTigEQckIgDEnFAIg5IxAGJOCDN/PE5H/vUDJMDEnFAIg5IxAHprQdS3obtjckBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTgg/QNeR51MCIIsagAAAABJRU5ErkJggg==">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#232A24;
+    --paper:#EEF0E6;
+    --paper-alt:#E3E6D7;
+    --paper-deep:#D9DCC9;
+    --line: rgba(35,42,36,0.14);
+    --muted: rgba(35,42,36,0.6);
+    --faint: rgba(35,42,36,0.48);
+    --plum:#7C5C82;
+    --plum-deep:#5E4463;
+    --gold:#E0A73E;
+    --gold-soft:#F1C876;
+    --sage:#6B8F71;
+    --berry:#C4506B;
+    --sky-top:#DDE7EA;
+    --card-shadow: 0 12px 40px rgba(35,42,36,0.08);
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+    --radius: 18px;
+    --radius-sm: 10px;
+  }
+  html[data-theme="dark"]{
+    --ink:#EDEFE6;
+    --paper:#191F1A;
+    --paper-alt:#232B23;
+    --paper-deep:#2C352B;
+    --line: rgba(237,239,230,0.14);
+    --muted: rgba(237,239,230,0.62);
+    --faint: rgba(237,239,230,0.46);
+    --plum:#A784AE;
+    --plum-deep:#C9A6D1;
+    --gold:#E7B458;
+    --gold-soft:#F0C876;
+    --sage:#8BB892;
+    --berry:#E28BA0;
+    --sky-top:#0F1720;
+    --card-shadow: 0 12px 40px rgba(0,0,0,0.35);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family: var(--font-body);
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    transition: background .25s ease, color .25s ease;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+  button{ font-family: var(--font-body); cursor:pointer; border:none; background:none; color:inherit; }
+  button:focus-visible, input:focus-visible, textarea:focus-visible, .tab:focus-visible{
+    outline: 2px solid var(--plum); outline-offset:2px;
+  }
+  input, textarea{ font-family: var(--font-body); }
+  a{ color: var(--plum-deep); }
+
+  #app{ max-width: 880px; margin: 0 auto; min-height:100vh; display:flex; flex-direction:column; }
+
+  /* ---------- Loading ---------- */
+  #boot{
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    min-height:100vh; gap:14px; text-align:center; padding:24px;
+  }
+  #boot .sun{
+    width:46px;height:46px;border-radius:50%;
+    background: radial-gradient(circle at 35% 30%, var(--gold-soft), var(--gold));
+    animation: riseSpin 1.4s ease-in-out infinite;
+  }
+  @keyframes riseSpin{ 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-10px);} }
+  #boot p{ font-family: var(--font-mono); font-size:13px; letter-spacing:.04em; color: var(--plum-deep); }
+
+  /* ---------- Header ---------- */
+  header.top{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 18px 22px 12px; gap:12px;
+  }
+  .wordmark{ display:flex; align-items:baseline; gap:8px; }
+  .wordmark .num{ font-family: var(--font-display); font-weight:700; font-size:30px; letter-spacing:-0.01em; color: var(--ink); }
+  .wordmark .word{ font-family: var(--font-display); font-weight:500; font-size:22px; color: var(--plum-deep); font-style:italic; }
+  .headActions{ display:flex; align-items:center; gap:8px; }
+  .pillBtn{
+    font-family: var(--font-mono); font-size:12px; letter-spacing:.03em;
+    padding:8px 12px; border-radius:999px; background: var(--paper-alt);
+    border:1px solid var(--line); transition: background .15s ease; white-space:nowrap;
+  }
+  .pillBtn:hover{ background: var(--paper-deep); }
+  .iconBtn{
+    width:36px;height:36px;border-radius:50%; display:flex; align-items:center; justify-content:center;
+    background: var(--paper-alt); border:1px solid var(--line); font-family: var(--font-display); font-weight:600; font-size:16px;
+    transition: background .15s ease, transform .15s ease; flex-shrink:0;
+  }
+  .iconBtn:hover{ background: var(--plum); color:#fff; transform: translateY(-1px); }
+
+  /* ---------- Tabs ---------- */
+  nav.tabs{
+    display:flex; gap:4px; padding: 4px 22px 0; border-bottom:1px solid var(--line);
+    overflow-x:auto; scrollbar-width:none;
+  }
+  nav.tabs::-webkit-scrollbar{ display:none; }
+  .tab{
+    font-family: var(--font-mono); font-size:12.5px; letter-spacing:.03em;
+    padding:10px 14px; border-radius: 10px 10px 0 0; color: var(--muted);
+    position:relative; top:1px; transition: color .15s ease; white-space:nowrap; flex-shrink:0;
+  }
+  .tab[aria-selected="true"]{ color: var(--ink); }
+  .tab[aria-selected="true"]::after{
+    content:""; position:absolute; left:10px; right:10px; bottom:-1px; height:2px; background: var(--plum);
+    border-radius:2px;
+  }
+  .tab:hover{ color: var(--ink); }
+
+  main{ flex:1; padding: 20px 22px 60px; }
+  .panel{ display:none; animation: fadeIn .25s ease; }
+  .panel.active{ display:block; }
+  @keyframes fadeIn{ from{opacity:0; transform: translateY(4px);} to{opacity:1; transform:none;} }
+
+  /* ---------- Banner ---------- */
+  .banner{
+    display:flex; align-items:center; gap:10px; padding:12px 16px; border-radius: var(--radius-sm);
+    background: #F3E3E6; border:1px solid rgba(196,80,107,0.3); color: var(--berry);
+    font-size:13.5px; margin-bottom:16px;
+  }
+  html[data-theme="dark"] .banner{ background: rgba(226,139,160,0.12); }
+  .banner button.dismiss{ margin-left:auto; font-family: var(--font-mono); font-size:11px; color: var(--berry); text-decoration:underline; flex-shrink:0; }
+
+  /* ---------- Today panel ---------- */
+  .todayHead{ display:flex; align-items:center; gap:22px; margin-bottom:22px; flex-wrap:wrap; }
+  .arcWrap{ flex-shrink:0; }
+  .todayHead .meta{ display:flex; flex-direction:column; gap:4px; }
+  .dayLabel{ font-family: var(--font-display); font-size:26px; font-weight:600; }
+  .streakLine{ font-family: var(--font-mono); font-size:13px; color: var(--plum-deep); display:flex; align-items:center; gap:6px;}
+  .streakLine .flame{ font-size:14px; }
+  .subtext{ font-size:13px; color: var(--muted); max-width:340px; }
+
+  .checklist{ display:flex; flex-direction:column; gap:10px; }
+  .item{
+    display:flex; align-items:center; gap:14px; padding:14px 16px; border-radius: var(--radius-sm);
+    background: var(--paper-alt); border:1px solid var(--line); transition: background .15s ease, border-color .15s ease;
+    position:relative;
+  }
+  .item.done{ background: rgba(107,143,113,0.18); border-color: rgba(107,143,113,0.4); }
+  .item .check{
+    width:26px; height:26px; border-radius:50%; border:2px solid var(--faint); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; transition: all .15s ease; background: var(--paper);
+  }
+  .item.done .check{ background: var(--sage); border-color: var(--sage); color:#fff; }
+  .item .check svg{ width:14px; height:14px; opacity:0; transition: opacity .1s ease; }
+  .item.done .check svg{ opacity:1; }
+  .item .label{ flex:1; }
+  .item .label .t{ font-weight:600; font-size:14.5px; }
+  .item .label .d{ font-size:12px; color: var(--muted); margin-top:1px;}
+  .item .emoji{ font-size:20px; width:26px; text-align:center; flex-shrink:0; }
+  .item button.rowBtn{ position:absolute; inset:0; width:100%; height:100%; }
+
+  .stepsRow .rowBtn{ display:none; }
+  .stepsInputWrap{ display:flex; align-items:center; gap:8px; flex-shrink:0; z-index:1; }
+  .stepsInputWrap input{ width:78px; padding:8px 10px; border-radius:8px; border:1px solid var(--line); background: var(--paper); color: var(--ink); font-family: var(--font-mono); font-size:13px; text-align:right; }
+  .stepsInputWrap input:focus{ outline:none; border-color: var(--plum); }
+  .stepsInputWrap span{ font-family: var(--font-mono); font-size:11px; color: var(--muted); }
+
+  .doubleToggleRow{
+    display:flex; align-items:center; justify-content:space-between; gap:14px;
+    padding:14px 16px; border-radius: var(--radius-sm); border:1px dashed var(--line); margin-top:6px;
+    background: rgba(124,92,130,0.06);
+  }
+  .doubleToggleRow .t{ font-weight:600; font-size:13.5px; }
+  .doubleToggleRow .d{ font-size:12px; color: var(--muted); margin-top:2px; }
+  .switch{ position:relative; width:44px; height:25px; border-radius:999px; background: var(--paper-deep); flex-shrink:0; transition: background .2s ease; }
+  .switch::after{ content:""; position:absolute; top:3px; left:3px; width:19px; height:19px; border-radius:50%; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,0.25); transition: transform .2s ease; }
+  .switch.on{ background: var(--plum); }
+  .switch.on::after{ transform: translateX(19px); }
+
+  .completeBadge{
+    margin-top:18px; padding:16px; border-radius: var(--radius-sm); text-align:center;
+    background: linear-gradient(135deg, var(--gold-soft), var(--gold)); color:#3A2A0A; font-family: var(--font-display); font-weight:600; font-size:15px;
+    display:none;
+  }
+  .completeBadge.show{ display:block; animation: fadeIn .3s ease; }
+
+  .stepsNote{ font-size:11.5px; color: var(--faint); margin-top:10px; line-height:1.5; }
+  .noteField{ margin-top:16px; }
+  .noteField label{ display:block; font-family: var(--font-mono); font-size:11px; letter-spacing:.03em; color: var(--muted); margin-bottom:6px; text-transform:uppercase; }
+  .noteField label span{ text-transform:none; letter-spacing:0; color: var(--faint); font-family: var(--font-body); }
+  .noteField textarea{ width:100%; padding:12px 14px; border-radius: var(--radius-sm); border:1px solid var(--line); background: var(--paper-alt); color: var(--ink); font-size:13.5px; resize:vertical; min-height:52px; }
+  .noteField textarea:focus{ outline:none; border-color: var(--plum); }
+
+  /* ---------- Street (community) ---------- */
+  .streetIntro{ font-size:13px; color: var(--muted); margin-bottom:18px; max-width:520px; }
+  .skyline{
+    display:flex; flex-wrap:wrap; gap:14px 10px; align-items:flex-end; padding: 20px 16px 16px;
+    background: linear-gradient(to bottom, var(--sky-top), var(--paper-alt) 70%);
+    border-radius: var(--radius); border:1px solid var(--line); min-height:180px;
+  }
+  .house{ display:flex; flex-direction:column; align-items:center; width:72px; flex-shrink:0; }
+  .roof{ width:0; height:0; border-left:36px solid transparent; border-right:36px solid transparent; border-bottom:22px solid var(--plum-deep); position:relative; }
+  .roof .flame{ position:absolute; top:-10px; right:-8px; font-size:11px; }
+  .roof .pet{ position:absolute; top:-17px; left:50%; transform:translateX(-50%); font-size:19px; line-height:1; z-index:2; }
+  .body{ width:64px; height:54px; background: var(--paper); border:1px solid var(--line); border-radius:2px 2px 4px 4px; position:relative; display:flex; align-items:center; justify-content:center; }
+  .window{
+    width:22px; height:22px; border-radius:3px; background: #7C8A79; transition: background .3s ease, box-shadow .3s ease;
+  }
+  .window.some{ background: #E0A73E; opacity:0.55; animation: flicker 2.4s ease-in-out infinite; }
+  .window.all{ background: var(--gold); box-shadow: 0 0 14px 4px rgba(224,167,62,0.65); }
+  @keyframes flicker{ 0%,100%{opacity:0.45;} 50%{opacity:0.75;} }
+  .houseName{ margin-top:8px; font-family: var(--font-mono); font-size:10.5px; text-align:center; line-height:1.3; word-break:break-word; max-width:70px; }
+  .houseName .you{ color: var(--plum-deep); }
+  .skylineEmpty{ font-size:13px; color: var(--faint); font-style:italic; padding:20px; text-align:center; width:100%; }
+  .legend{ display:flex; gap:16px; margin-top:14px; flex-wrap:wrap; font-size:11.5px; color: var(--muted); }
+  .legend span{ display:inline-flex; align-items:center; gap:6px; }
+  .legend .dot{ width:10px; height:10px; border-radius:2px; display:inline-block; }
+
+  /* ---------- Recipe ---------- */
+  .recipeCard{ background: var(--paper-alt); border:1px solid var(--line); border-radius: var(--radius); padding:22px; }
+  .recipeTag{ font-family: var(--font-mono); font-size:11px; letter-spacing:.04em; color: var(--plum-deep); text-transform:uppercase; }
+  .recipeTitle{ font-family: var(--font-display); font-size:24px; font-weight:600; margin:6px 0 4px; }
+  .recipeMeta{ font-size:12.5px; color: var(--muted); margin-bottom:16px; }
+  .recipeCols{ display:grid; grid-template-columns: 1fr 1.4fr; gap:22px; }
+  @media (max-width:560px){ .recipeCols{ grid-template-columns: 1fr; } }
+  .recipeCols h4{ font-family: var(--font-mono); font-size:11px; letter-spacing:.03em; text-transform:uppercase; color: var(--muted); margin:0 0 8px; }
+  .recipeCols ul, .recipeCols ol{ margin:0; padding-left:20px; font-size:13.5px; line-height:1.6; }
+  .recipeCols li{ margin-bottom:6px; }
+  .recipeBtns{ display:flex; gap:10px; margin-top:18px; flex-wrap:wrap; }
+  .ghostBtn{ padding:10px 16px; border-radius:999px; border:1px solid var(--line); font-size:12.5px; font-family: var(--font-mono); background: var(--paper); transition: background .15s; }
+  .ghostBtn:hover{ background: var(--paper-deep); }
+
+  /* ---------- Foods ---------- */
+  .foodsIntro{ font-size:13px; color: var(--muted); margin-bottom:18px; max-width:560px; }
+  .foodsGrid{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
+  @media (max-width:560px){ .foodsGrid{ grid-template-columns: 1fr; } }
+  .foodsCol{ border-radius: var(--radius); padding:18px 20px; border:1px solid var(--line); }
+  .foodsCol.eat{ background: rgba(107,143,113,0.1); }
+  .foodsCol.avoid{ background: rgba(196,80,107,0.09); }
+  .foodsCol h3{ font-family: var(--font-display); font-size:18px; margin:0 0 14px; display:flex; align-items:center; gap:8px; }
+  .foodsSubcat{ margin-bottom:16px; }
+  .foodsSubcat:last-child{ margin-bottom:0; }
+  .foodsSubcat h4{ font-family: var(--font-mono); font-size:11px; letter-spacing:.03em; text-transform:uppercase; color: var(--muted); margin:0 0 8px; }
+  .foodsCol ul{ margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .foodsCol li{ font-size:13.5px; display:flex; align-items:baseline; gap:8px; }
+  .foodsCol li::before{ flex-shrink:0; }
+  .foodsCol.eat li::before{ content:"✓"; color: var(--sage); font-weight:700; }
+  .foodsCol.avoid li::before{ content:"✕"; color: var(--berry); font-weight:700; }
+
+  /* ---------- Weather ---------- */
+  .weatherCard{ background: var(--paper-alt); border:1px solid var(--line); border-radius: var(--radius); padding:24px; text-align:center; }
+  .weatherTop{ display:flex; align-items:center; justify-content:center; gap:18px; flex-wrap:wrap; }
+  .weatherEmoji{ font-size:52px; }
+  .weatherTemp{ font-family: var(--font-display); font-size:44px; font-weight:600; }
+  .weatherDesc{ font-size:13.5px; color: var(--muted); margin-top:4px; }
+  .weatherSub{ font-family: var(--font-mono); font-size:12px; color: var(--muted); margin-top:14px; display:flex; justify-content:center; gap:18px; flex-wrap:wrap; }
+  .forecastRow{ display:flex; gap:10px; justify-content:center; margin-top:22px; flex-wrap:wrap; }
+  .forecastDay{ background: var(--paper); border:1px solid var(--line); border-radius: var(--radius-sm); padding:12px 14px; min-width:76px; text-align:center; }
+  .forecastDay .d{ font-family: var(--font-mono); font-size:11px; color: var(--muted); }
+  .forecastDay .e{ font-size:22px; margin:6px 0; }
+  .forecastDay .t{ font-size:12.5px; font-weight:600; }
+  .weatherErr{ font-size:13px; color: var(--muted); font-style:italic; }
+  .weatherLoading{ font-size:13px; color: var(--muted); }
+
+  /* ---------- Chat ---------- */
+  .chatWrap{ display:flex; flex-direction:column; height: 62vh; min-height:380px; border:1px solid var(--line); border-radius: var(--radius); overflow:hidden; background: var(--paper-alt); }
+  .chatLog{ flex:1; overflow-y:auto; padding:16px; display:flex; flex-direction:column; gap:10px; background: var(--paper); }
+  .msg{ max-width:76%; padding:10px 13px; border-radius:14px; font-size:13.5px; line-height:1.4; position:relative; }
+  .msg.me{ align-self:flex-end; background: var(--plum); color:#fff; border-bottom-right-radius:4px; }
+  .msg.other{ align-self:flex-start; background: var(--paper-alt); border:1px solid var(--line); border-bottom-left-radius:4px; }
+  .msg .who{ font-family: var(--font-mono); font-size:10.5px; opacity:0.7; margin-bottom:3px; display:block; }
+  .msg img{ max-width:100%; border-radius:8px; display:block; margin-top:4px; }
+  .msg.sticker{ font-size:34px; padding:6px 10px; background:transparent; border:none; animation: popIn .35s cubic-bezier(.34,1.56,.64,1); }
+  @keyframes popIn{ from{ transform: scale(0); } to{ transform: scale(1); } }
+  .chatEmpty{ margin:auto; font-size:13px; color: var(--faint); font-style:italic; }
+  .chatBar{ display:flex; align-items:center; gap:8px; padding:10px; border-top:1px solid var(--line); background: var(--paper-alt); flex-wrap:wrap; }
+  .chatBar input[type=text]{ flex:1; min-width:100px; padding:10px 12px; border-radius:999px; border:1px solid var(--line); background: var(--paper); color: var(--ink); font-size:13.5px; }
+  .chatBar input[type=text]:focus{ outline:none; border-color: var(--plum); }
+  .stickerTray{ display:flex; gap:4px; padding: 6px 10px; border-top:1px solid var(--line); background: var(--paper-alt); flex-wrap:wrap; }
+  .stickerTray button{ font-size:20px; padding:6px; border-radius:8px; transition: background .12s ease; }
+  .stickerTray button:hover{ background: var(--paper-deep); }
+  .roundBtn{ width:38px;height:38px;border-radius:50%; background: var(--paper); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; transition: background .15s; }
+  .roundBtn:hover{ background: var(--paper-deep); }
+  .sendBtn{ background: var(--plum); color:#fff; padding:10px 18px; border-radius:999px; font-weight:600; font-size:13px; flex-shrink:0; }
+  .sendBtn:hover{ background: var(--plum-deep); }
+
+  /* ---------- Onboarding ---------- */
+  #onboarding{ min-height:100vh; display:flex; align-items:center; justify-content:center; padding: 30px 18px; position:relative; }
+  .obThemeBtn{ position:absolute; top:18px; right:18px; }
+  .obCard{ max-width:520px; width:100%; background: var(--paper-alt); border-radius: var(--radius); border:1px solid var(--line); padding: 30px 28px; box-shadow: var(--card-shadow); }
+  .obCard h1{ font-family: var(--font-display); font-size:28px; margin:0 0 4px; }
+  .obCard .obSub{ font-family: var(--font-mono); font-size:12.5px; color: var(--plum-deep); margin-bottom:18px; letter-spacing:.02em; }
+  .terms{ display:flex; flex-direction:column; gap:10px; margin: 16px 0 20px; }
+  .terms li{ font-size:13.5px; line-height:1.5; list-style:none; padding-left:22px; position:relative; }
+  .terms li::before{ content:"—"; position:absolute; left:0; color: var(--plum); }
+  .agreeRow{ display:flex; align-items:flex-start; gap:10px; padding:12px; background: var(--paper); border-radius: var(--radius-sm); margin-bottom:16px; }
+  .agreeRow input{ margin-top:2px; width:16px; height:16px; accent-color: var(--plum); flex-shrink:0; }
+  .agreeRow label{ font-size:13px; line-height:1.4; }
+  .obBtn{ width:100%; padding:14px; border-radius:999px; background: var(--plum); color:#fff; font-weight:600; font-size:14.5px; transition: background .15s, opacity .15s; }
+  .obBtn:hover{ background: var(--plum-deep); }
+  .obBtn:disabled{ opacity:0.4; cursor:not-allowed; }
+  .obField{ margin-bottom:16px; }
+  .obField label{ display:block; font-family: var(--font-mono); font-size:11.5px; letter-spacing:.03em; margin-bottom:6px; color: var(--muted); }
+  .obField input[type=text]{ width:100%; padding:13px 14px; border-radius: var(--radius-sm); border:1px solid var(--line); font-size:15px; background: var(--paper); color: var(--ink); }
+  .obField input[type=text]:focus{ outline:none; border-color: var(--plum); }
+  .petPicker{ display:flex; gap:10px; }
+  .petOption{ flex:1; display:flex; align-items:center; justify-content:center; gap:8px; padding:14px; border-radius: var(--radius-sm); border:1px solid var(--line); background: var(--paper); font-size:14px; font-weight:600; transition: background .15s ease, border-color .15s ease; }
+  .petOption .petEmoji{ font-size:20px; }
+  .petOption:hover{ background: var(--paper-deep); }
+  .petOption.selected{ border-color: var(--plum); background: rgba(124,92,130,0.12); }
+  .obToggleCard{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px; border-radius: var(--radius-sm); background: var(--paper); margin-bottom:22px; }
+  .obToggleCard .t{ font-weight:600; font-size:13.5px; }
+  .obToggleCard .d{ font-size:12px; color: var(--muted); margin-top:2px; }
+
+  /* ---------- Modals ---------- */
+  .modalOverlay{ position:fixed; inset:0; background: rgba(0,0,0,0.45); display:none; align-items:center; justify-content:center; padding:20px; z-index:50; }
+  .modalOverlay.show{ display:flex; }
+  .modalCard{ background: var(--paper-alt); color: var(--ink); border-radius: var(--radius); max-width:540px; width:100%; max-height:82vh; overflow-y:auto; padding: 26px 26px 24px; position:relative; box-shadow: var(--card-shadow); }
+  .modalCard h2{ font-family: var(--font-display); font-size:23px; margin: 0 0 14px; }
+  .modalCard h3{ font-family: var(--font-mono); font-size:12px; letter-spacing:.04em; color: var(--plum-deep); margin: 18px 0 8px; text-transform:uppercase; }
+  .modalCard p, .modalCard li{ font-size:13.5px; line-height:1.55; }
+  .modalCard ul{ margin:0; padding-left:20px; }
+  .modalClose{ position:absolute; top:18px; right:18px; width:32px; height:32px; border-radius:50%; background: var(--paper); font-size:15px; }
+  .modalClose:hover{ background: var(--paper-deep); }
+
+  .funCard{ text-align:center; max-width:380px; }
+  .funEmoji{ font-size:56px; display:block; margin-bottom:10px; }
+  .funText{ font-family: var(--font-display); font-size:21px; font-weight:600; margin: 0 0 18px; }
+  .funBtn{ padding:12px 26px; border-radius:999px; background: var(--plum); color:#fff; font-weight:600; font-size:13.5px; }
+  .funBtn:hover{ background: var(--plum-deep); }
+  .confettiPiece{ position:absolute; top:-8%; pointer-events:none; animation-name:confettiFall; animation-timing-function:ease-in; animation-fill-mode:forwards; z-index:1; }
+  @keyframes confettiFall{ from{ transform: translateY(0) rotate(0deg); opacity:1; } to{ transform: translateY(110vh) rotate(360deg); opacity:0.75; } }
+  .milestoneSub{ font-family: var(--font-mono); font-size:12px; color: var(--muted); margin-top:-10px; margin-bottom:18px; }
+
+  .streetStats{ display:flex; gap:12px; flex-wrap:wrap; margin-bottom:16px; }
+  .statCard{ flex:1; min-width:180px; padding:14px 16px; border-radius: var(--radius-sm); background: var(--paper-alt); border:1px solid var(--line); }
+  .statCard .label{ font-family: var(--font-mono); font-size:10.5px; letter-spacing:.03em; color: var(--muted); text-transform:uppercase; margin-bottom:5px; }
+  .statCard .value{ font-family: var(--font-display); font-size:16px; font-weight:600; }
+  .nudgeBtn{ margin-top:6px; font-family: var(--font-mono); font-size:9.5px; letter-spacing:.02em; padding:4px 8px; border-radius:999px; background: var(--paper); border:1px solid var(--line); color: var(--muted); transition: background .15s ease; }
+  .nudgeBtn.invisible{ visibility:hidden; }
+  .nudgeBtn:hover:not(:disabled){ background: var(--plum); color:#fff; border-color: var(--plum); }
+  .nudgeBtn:disabled{ opacity:0.5; cursor:default; }
+  .msg.nudge{ align-self:center; background:transparent; color: var(--muted); font-style:italic; font-size:12px; padding:4px 10px; }
+
+  .sr-only{ position:absolute; width:1px;height:1px; overflow:hidden; clip:rect(0,0,0,0); }
+
+  @media (max-width: 520px){
+    .wordmark .num{ font-size:24px; } .wordmark .word{ font-size:18px; }
+    header.top{ padding:14px 16px 10px; } nav.tabs{ padding:4px 16px 0; } main{ padding:16px 16px 50px; }
+    .todayHead{ gap:14px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="app">
+
+  <div id="boot">
+    <div class="sun"></div>
+    <p id="bootMsg">waking up soft street&hellip;</p>
+  </div>
+
+  <div id="onboarding" hidden></div>
+
+  <div id="mainScreen" hidden>
+    <header class="top">
+      <div class="wordmark"><span class="num">75</span><span class="word">soft</span></div>
+      <div class="headActions">
+        <button class="pillBtn" id="whoAmI" type="button"></button>
+        <button class="iconBtn" id="themeBtn" type="button" aria-label="Toggle dark mode">🌙</button>
+        <button class="iconBtn" id="helpBtn" type="button" aria-haspopup="dialog" aria-label="Help">?</button>
+      </div>
+    </header>
+
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button class="tab" role="tab" id="tabBtn-today" aria-selected="true" data-panel="today">TODAY</button>
+      <button class="tab" role="tab" id="tabBtn-street" aria-selected="false" data-panel="street">SOFT STREET</button>
+      <button class="tab" role="tab" id="tabBtn-recipe" aria-selected="false" data-panel="recipe">RECIPE</button>
+      <button class="tab" role="tab" id="tabBtn-foods" aria-selected="false" data-panel="foods">FOODS</button>
+      <button class="tab" role="tab" id="tabBtn-weather" aria-selected="false" data-panel="weather">WEATHER</button>
+      <button class="tab" role="tab" id="tabBtn-chat" aria-selected="false" data-panel="chat">CHAT</button>
+    </nav>
+
+    <main>
+      <section class="panel active" id="panel-today"></section>
+      <section class="panel" id="panel-street"></section>
+      <section class="panel" id="panel-recipe"></section>
+      <section class="panel" id="panel-foods"></section>
+      <section class="panel" id="panel-weather"></section>
+      <section class="panel" id="panel-chat"></section>
+    </main>
+  </div>
+</div>
+
+<div class="modalOverlay" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+  <div class="modalCard">
+    <button class="modalClose" id="helpClose" aria-label="Close help">✕</button>
+    <h2 id="helpTitle">How 75 SOFT works</h2>
+    <p>A handful of daily habits, seventy-five days, one street full of people quietly cheering you on.</p>
+    <h3>Your daily list</h3>
+    <ul>
+      <li><strong>10,000 steps</strong> — logged manually (see note below).</li>
+      <li><strong>3 litres of water</strong> — yes, all of it.</li>
+      <li><strong>10 pages</strong> of a self-help / growth book.</li>
+      <li><strong>No alcohol or soft drink</strong> — sparkling water is not a loophole, but it's also not against the rules.</li>
+      <li><strong>No added sugar or takeaway</strong> — home-cooked only, and check labels for the sneaky stuff. Natural sugar in whole fruit is fine. Check the Foods tab if you're unsure.</li>
+      <li><strong>One 45-minute workout</strong>, every day, no swaps.</li>
+      <li><strong>Optional second 45-minute session</strong> — toggle this on yourself. It's your call, and only your call.</li>
+    </ul>
+    <h3>Why steps are manual</h3>
+    <p>A web app like this one can't be granted access to Apple Health or an Apple Watch — that data is locked to Apple's own Health app and apps you've specifically approved on your phone. Log your count from your Watch or Health app each day; it takes five seconds.</p>
+    <h3>Soft Street</h3>
+    <p>Every person on the challenge gets a little house, with the cat or dog they picked at sign-up sitting proudly on the roof. Make progress and the window flickers gold. Finish everything and it glows fully — everyone can see it, nobody can touch it but you. At the top you'll also see who's holding the longest streak and who's been most consistent this week.</p>
+    <h3>Nudges</h3>
+    <p>See a house that hasn't lit up yet? Tap "👋 nudge" underneath it to give them a gentle, public nudge in the chat. You can only nudge each person once per day, and you can't nudge yourself.</p>
+    <h3>Private notes &amp; milestones</h3>
+    <p>There's a small note box on the Today tab for jotting down how the day went — it's just for you, nobody else can see it. And on days 7, 30, 50 and 75, finishing your full list unlocks a little celebration.</p>
+    <h3>Recipe &amp; Foods</h3>
+    <p>A new clean-eating recipe is picked for everyone each day — no added sugar, nothing from a takeaway bag. The Foods tab is a quick reference for what's in and out.</p>
+    <h3>The reset</h3>
+    <p>Every window goes dark again at midnight, your time. New day, clean slate, same seven habits — and a new cheesy greeting waiting for you.</p>
+    <h3>Chat</h3>
+    <p>Send messages, photos, and a few celebratory stickers to cheer each other on. Be kind — someone's window might be dark for a reason.</p>
+  </div>
+</div>
+
+<div class="modalOverlay" id="funModal" role="dialog" aria-modal="true" aria-labelledby="funTitle">
+  <div class="modalCard funCard">
+    <span class="funEmoji" id="funEmoji">🥑</span>
+    <p class="funText" id="funTitle">You avo got this.</p>
+    <button class="funBtn" id="funClose" type="button">Let's go</button>
+  </div>
+</div>
+
+<div class="modalOverlay" id="milestoneModal" role="dialog" aria-modal="true" aria-labelledby="milestoneTitle">
+  <div class="modalCard funCard">
+    <span class="funEmoji" id="milestoneEmoji">🎉</span>
+    <p class="funText" id="milestoneTitle">One week down.</p>
+    <p class="milestoneSub" id="milestoneSub">Day 7 of 75</p>
+    <button class="funBtn" id="milestoneClose" type="button">Onwards</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  const TODAY_ITEMS = [
+    {key:'steps', type:'count', target:10000, emoji:'👟', t:'10,000 steps', d:'Logged manually from your Watch or Health app.'},
+    {key:'water', type:'check', emoji:'💧', t:'3 litres of water', d:'Keep a bottle within arm\'s reach.'},
+    {key:'pages', type:'check', emoji:'📖', t:'10 pages', d:'A self-help or growth book.'},
+    {key:'noAlcohol', type:'check', emoji:'🚫', t:'No alcohol or soft drink', d:'Water, tea, black coffee — you know the deal.'},
+    {key:'cleanEating', type:'check', emoji:'🥡', t:'No added sugar or takeaway', d:'Home-cooked only, and check labels for sneaky sugar. Natural sugar in whole fruit is fine.'},
+    {key:'exercise1', type:'check', emoji:'🏋️', t:'45-minute workout', d:'Non-negotiable session #1.'}
+  ];
+  const SECOND_SESSION = {key:'exercise2', type:'check', emoji:'🔥', t:'Second 45-minute session', d:'Only counts if you\'ve switched this on.'};
+  const STICKERS = ['🎉','🔥','💪','👏','🌊','📚','☀️','🏆'];
+  const MAX_CHAT = 60;
+
+  const FUN_MESSAGES = [
+    {t:"You avo got this.", e:"🥑"},
+    {t:"Lettuce get through today.", e:"🥬"},
+    {t:"Water you waiting for?", e:"💧"},
+    {t:"Don't peel discouraged.", e:"🍌"},
+    {t:"You're grape, just the way you are.", e:"🍇"},
+    {t:"Kiwi did it — one more day, let's go.", e:"🥝"},
+    {t:"Orange you glad it's a new day?", e:"🍊"},
+    {t:"Let's taco 'bout your goals today.", e:"🌮"},
+    {t:"You're one in a melon.", e:"🍉"},
+    {t:"Time to turnip the intensity.", e:"🥕"},
+    {t:"Olive you, now go drink your water.", e:"🫒"},
+    {t:"You're on a roll — oat-standing work.", e:"🥣"},
+    {t:"Stay cool as a cucumber out there.", e:"🥒"},
+    {t:"Chili out, then get it done.", e:"🌶️"},
+    {t:"You're the zest of the best.", e:"🍋"},
+    {t:"Don't be a couch potato today.", e:"🥔"},
+    {t:"Sugar, we're doing just fine without you today.", e:"🍭"},
+    {t:"Fresh start, fresh produce, let's go.", e:"🍓"},
+    {t:"Squash any doubts — today's yours.", e:"🎃"},
+    {t:"You mango get through this list.", e:"🥭"}
+  ];
+
+  const RECIPES = [
+    {name:"Lemon Herb Grilled Chicken & Greens", emoji:"🍗", time:"25 min", serves:"2",
+     ing:["2 chicken breasts","1 lemon, juiced","2 tbsp olive oil","2 garlic cloves, minced","1 tsp dried oregano","2 cups mixed greens","1 cucumber, sliced","Salt & pepper"],
+     steps:["Whisk lemon juice, olive oil, garlic and oregano in a bowl.","Coat the chicken in the marinade for at least 10 minutes.","Grill or pan-sear chicken 6–7 minutes per side until cooked through.","Toss greens and cucumber with a little leftover marinade.","Slice chicken and serve over the salad."]},
+    {name:"Sweet Potato & Black Bean Bowl", emoji:"🍠", time:"30 min", serves:"2",
+     ing:["2 sweet potatoes, cubed","1 can black beans, rinsed","1 avocado","1 cup corn kernels","1 lime, juiced","1 tsp cumin","Olive oil, salt"],
+     steps:["Roast sweet potato cubes with olive oil, cumin and salt at 200°C for 20 minutes.","Warm the black beans and corn in a pan.","Divide sweet potato, beans and corn into bowls.","Top with sliced avocado and a squeeze of lime."]},
+    {name:"Baked Salmon with Roasted Veg", emoji:"🐟", time:"30 min", serves:"2",
+     ing:["2 salmon fillets","1 broccoli head, chopped","1 red capsicum, sliced","2 tbsp olive oil","1 tsp paprika","Lemon wedges"],
+     steps:["Toss broccoli and capsicum with olive oil and paprika, spread on a tray.","Place salmon on the same tray, season with salt and pepper.","Bake at 200°C for 15–18 minutes until salmon is opaque.","Serve with lemon wedges."]},
+    {name:"Overnight Oats with Berries", emoji:"🥣", time:"5 min + overnight", serves:"1",
+     ing:["1/2 cup rolled oats","1/2 cup unsweetened almond milk","2 tbsp Greek yoghurt","1/2 cup mixed berries","1 tbsp chia seeds","1 tsp honey (optional)"],
+     steps:["Combine oats, milk, yoghurt and chia seeds in a jar.","Stir well, cover and refrigerate overnight.","Top with berries and a drizzle of honey before eating."]},
+    {name:"Turkey & Veggie Lettuce Wraps", emoji:"🥬", time:"20 min", serves:"2",
+     ing:["300g ground turkey","1 carrot, grated","1/2 cup mushrooms, diced","2 tbsp tamari or soy sauce","1 tsp ginger, grated","1 head butter lettuce"],
+     steps:["Brown the turkey in a pan over medium heat.","Add carrot, mushrooms, ginger and tamari, cook 5 minutes.","Spoon the mixture into lettuce leaves.","Roll or fold and eat like a taco."]},
+    {name:"Chickpea & Spinach Curry", emoji:"🍛", time:"25 min", serves:"3",
+     ing:["1 can chickpeas, rinsed","2 cups spinach","1 can crushed tomatoes","1 onion, diced","2 tsp curry powder","1 tbsp coconut oil","1 cup coconut milk"],
+     steps:["Sauté onion in coconut oil until soft.","Stir in curry powder, then add tomatoes and coconut milk.","Simmer 10 minutes, then add chickpeas.","Fold in spinach until wilted, serve warm."]},
+    {name:"Zucchini Noodle Bolognese", emoji:"🍝", time:"30 min", serves:"2",
+     ing:["3 zucchinis, spiralised","300g lean beef mince","1 jar or 2 cups tomato passata","1 onion, diced","2 garlic cloves","Fresh basil"],
+     steps:["Brown onion, garlic and mince in a pan.","Add passata and simmer 15 minutes.","Lightly sauté zucchini noodles 2–3 minutes until just tender.","Top noodles with sauce and fresh basil."]},
+    {name:"Egg & Veggie Muffin Cups", emoji:"🥚", time:"25 min", serves:"6", 
+     ing:["6 eggs","1/2 cup spinach, chopped","1/2 red capsicum, diced","2 tbsp feta (optional)","Salt & pepper"],
+     steps:["Whisk eggs with salt and pepper.","Divide spinach and capsicum into a greased muffin tray.","Pour egg mixture over the veggies, top with feta.","Bake at 180°C for 15–18 minutes until set."]},
+    {name:"Grilled Prawn & Avocado Salad", emoji:"🦐", time:"20 min", serves:"2",
+     ing:["300g prawns, peeled","1 avocado, diced","2 cups rocket","1/2 red onion, thinly sliced","1 tbsp olive oil","1 lime, juiced"],
+     steps:["Grill or pan-fry prawns 2–3 minutes per side until pink.","Toss rocket, avocado and red onion in a bowl.","Add prawns on top.","Drizzle with olive oil and lime juice."]},
+    {name:"Quinoa Tabbouleh", emoji:"🌿", time:"25 min", serves:"3",
+     ing:["1 cup quinoa, cooked","1 cup parsley, chopped","2 tomatoes, diced","1 cucumber, diced","2 tbsp olive oil","1 lemon, juiced"],
+     steps:["Cook quinoa according to packet instructions and cool slightly.","Combine quinoa, parsley, tomato and cucumber.","Dress with olive oil, lemon juice, salt and pepper.","Chill for 10 minutes before serving."]},
+    {name:"Beef & Broccoli Stir-Fry", emoji:"🥦", time:"20 min", serves:"2",
+     ing:["300g beef strips","2 cups broccoli florets","2 tbsp tamari","1 tsp sesame oil","1 garlic clove, minced","1 tsp ginger, grated"],
+     steps:["Sear beef strips in a hot pan for 2–3 minutes, remove.","Stir-fry broccoli, garlic and ginger 3–4 minutes.","Return beef to the pan with tamari and sesame oil.","Toss together and serve hot."]},
+    {name:"Baked Cod with Cherry Tomatoes", emoji:"🐠", time:"25 min", serves:"2",
+     ing:["2 cod fillets","1 cup cherry tomatoes","2 tbsp olive oil","1 tsp dried thyme","1 lemon, sliced"],
+     steps:["Place cod in a baking dish surrounded by cherry tomatoes.","Drizzle with olive oil, sprinkle thyme, top with lemon slices.","Bake at 190°C for 15–18 minutes until fish flakes easily.","Serve with the roasted tomatoes."]},
+    {name:"Lentil & Veggie Soup", emoji:"🍲", time:"35 min", serves:"4",
+     ing:["1 cup dried lentils, rinsed","1 carrot, diced","1 celery stalk, diced","1 onion, diced","4 cups vegetable stock","1 tsp cumin"],
+     steps:["Sauté onion, carrot and celery until softened.","Add lentils, stock and cumin.","Simmer 25 minutes until lentils are tender.","Season to taste and serve warm."]},
+    {name:"Greek Yoghurt Chicken Salad", emoji:"🥙", time:"15 min", serves:"2",
+     ing:["2 cups cooked chicken, shredded","1/2 cup Greek yoghurt","1 celery stalk, diced","1 tbsp Dijon mustard","Salt & pepper","Lettuce cups to serve"],
+     steps:["Mix chicken, yoghurt, celery and mustard in a bowl.","Season with salt and pepper.","Spoon into lettuce cups.","Serve chilled."]},
+    {name:"Roasted Veg & Hummus Plate", emoji:"🥕", time:"30 min", serves:"2",
+     ing:["1 zucchini, sliced","1 carrot, sliced","1 red capsicum, sliced","2 tbsp olive oil","1/2 cup hummus","Handful of almonds"],
+     steps:["Toss vegetables with olive oil and roast at 200°C for 20 minutes.","Arrange on a plate with a generous scoop of hummus.","Scatter almonds over the top.","Serve warm or at room temperature."]},
+    {name:"Berry & Spinach Smoothie Bowl", emoji:"🫐", time:"10 min", serves:"1",
+     ing:["1 cup frozen mixed berries","1 handful spinach","1/2 banana","1/2 cup unsweetened almond milk","2 tbsp granola (whole-grain)","1 tbsp pumpkin seeds"],
+     steps:["Blend berries, spinach, banana and almond milk until smooth.","Pour into a bowl.","Top with granola and pumpkin seeds.","Eat immediately with a spoon, not a straw."]},
+    {name:"Herb-Crusted Pork Loin & Apple Slaw", emoji:"🐷", time:"35 min", serves:"3",
+     ing:["500g pork loin","1 tbsp mixed dried herbs","1 apple, julienned","2 cups shredded cabbage","2 tbsp olive oil","1 tbsp apple cider vinegar"],
+     steps:["Rub pork loin with herbs, salt and pepper.","Sear then roast at 190°C for 20–25 minutes until cooked through.","Toss cabbage and apple with olive oil and vinegar.","Rest the pork 5 minutes, slice, and serve with the slaw."]},
+    {name:"Shakshuka", emoji:"🍅", time:"25 min", serves:"2",
+     ing:["4 eggs","1 can crushed tomatoes","1 onion, diced","1 red capsicum, diced","1 tsp smoked paprika","1 tsp cumin"],
+     steps:["Sauté onion and capsicum until soft.","Add tomatoes, paprika and cumin, simmer 10 minutes.","Make four small wells in the sauce and crack in the eggs.","Cover and cook 6–8 minutes until eggs are set to your liking."]},
+    {name:"Tuna & White Bean Salad", emoji:"🐟", time:"15 min", serves:"2",
+     ing:["1 can tuna in water, drained","1 can cannellini beans, rinsed","1/2 red onion, finely sliced","2 tbsp olive oil","1 tbsp red wine vinegar","Fresh parsley"],
+     steps:["Combine tuna, beans and red onion in a bowl.","Whisk olive oil and vinegar, pour over the salad.","Toss gently and top with parsley.","Serve chilled or at room temperature."]},
+    {name:"Cauliflower Fried \"Rice\"", emoji:"🍚", time:"20 min", serves:"3",
+     ing:["1 head cauliflower, grated or processed into rice","2 eggs","1 cup frozen peas & carrots","2 tbsp tamari","1 tsp sesame oil","2 spring onions, sliced"],
+     steps:["Scramble eggs in a hot pan, set aside.","Sauté cauliflower rice and peas/carrots for 5–6 minutes.","Stir in tamari, sesame oil and the scrambled eggs.","Top with spring onions and serve."]}
+  ];
+
+  const FOOD_LIST = {
+    eat: [
+      {cat:"Proteins", items:["Chicken, turkey & lean beef","Fish & seafood (fresh or frozen)","Eggs","Tofu & tempeh","Legumes (beans, lentils, chickpeas)","Plain Greek yoghurt & cottage cheese"]},
+      {cat:"Fruit & vegetables", items:["All fresh vegetables","All fresh fruit","Frozen veg & fruit (no added sugar/sauce)","Fresh or frozen berries"]},
+      {cat:"Grains & carbs", items:["Oats","Quinoa","Brown rice","Sweet potato & potato","Wholegrain/wholemeal bread (short ingredient list)","Wholewheat pasta"]},
+      {cat:"Fats & extras", items:["Olive oil, avocado oil, coconut oil","Nuts & seeds (unsalted, unsweetened)","Avocado","Nut butters (100% nuts, no added sugar)"]},
+      {cat:"Dairy & drinks", items:["Milk & unsweetened plant milk","Plain cheese in moderation","Water, herbal tea, black coffee","Sparkling/mineral water"]}
+    ],
+    avoid: [
+      {cat:"Drinks", items:["Alcohol (all types)","Soft drink & energy drinks","Sweetened juices & cordials","Artificially sweetened 'diet' drinks"]},
+      {cat:"Sugar & sweets", items:["Lollies & chocolate bars","Refined sugar & syrups (added to food)","Ice cream & sweetened desserts","Sugary cereals & flavoured yoghurts"]},
+      {cat:"Refined & packaged", items:["White bread, pastries & baked goods","Packaged snack foods & chips","Instant noodles & boxed meals","Anything with an ingredients list you can't picture in a kitchen"]},
+      {cat:"Processed & fast food", items:["Deli/processed meats with additives (ham, salami, nuggets)","Fast food & takeaway fried food","Pre-made sauces loaded with sugar or preservatives","Frozen meals with long additive lists"]}
+    ]
+  };
+
+  const CHALLENGE_START = '2026-07-06'; // Day 1 of 75
+
+  let profile = null;
+  let myDays = {};
+  let activePanel = 'today';
+  let streetPollTimer = null;
+  let chatPollTimer = null;
+  let lastChatRenderCount = 0;
+
+  // ---------- date helpers ----------
+  function fmt(d){ return d.toISOString().slice(0,10); }
+  function todayKey(){ return fmt(new Date()); }
+  function yesterdayKey(){ const d = new Date(); d.setDate(d.getDate()-1); return fmt(d); }
+  function dayOfYear(){
+    const now = new Date();
+    const start = new Date(now.getFullYear(),0,0);
+    return Math.floor((now - start) / 86400000);
+  }
+  function dayNumber(){
+    const start = new Date(CHALLENGE_START + 'T00:00:00');
+    const now = new Date(todayKey() + 'T00:00:00');
+    return Math.floor((now - start) / 86400000) + 1;
+  }
+
+  // ---------- storage helpers ----------
+  // Personal data lives in this browser's localStorage (private to this device).
+  // Shared data (Soft Street, chat, nudges) goes through a Netlify Function backed by Netlify Blobs,
+  // so everyone using the site sees the same shared data no matter what device they're on.
+  const LS_PREFIX = 'soft75_';
+  const FN_URL = '/.netlify/functions/storage';
+  const memoryFallback = {}; // used only if localStorage is unavailable (e.g. private browsing edge cases)
+
+  async function sGet(key, shared){
+    if(!shared){
+      try{
+        const v = localStorage.getItem(LS_PREFIX + key);
+        return v !== null ? v : null;
+      }catch(e){
+        return Object.prototype.hasOwnProperty.call(memoryFallback, key) ? memoryFallback[key] : null;
+      }
+    }
+    try{
+      const res = await fetch(FN_URL + '?key=' + encodeURIComponent(key));
+      if(res.status === 404) return null;
+      if(!res.ok) return null;
+      const data = await res.json();
+      return data.value;
+    }catch(e){ return null; }
+  }
+  async function sSet(key, value, shared){
+    if(!shared){
+      try{ localStorage.setItem(LS_PREFIX + key, value); }
+      catch(e){ memoryFallback[key] = value; }
+      return { key, value };
+    }
+    try{
+      const res = await fetch(FN_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ key, value })
+      });
+      if(!res.ok) return null;
+      return await res.json();
+    }catch(e){ console.error('storage set failed', key, e); return null; }
+  }
+  async function sJSON(key, shared, fallback){
+    const raw = await sGet(key, shared);
+    if(raw === null) return fallback;
+    try{ return JSON.parse(raw); }catch(e){ return fallback; }
+  }
+  function sSetJSON(key, obj, shared){ return sSet(key, JSON.stringify(obj), shared); }
+
+  // ---------- theme ----------
+  async function loadTheme(){
+    const t = await sGet('theme', false);
+    applyTheme(t === 'dark' ? 'dark' : 'light');
+  }
+  function applyTheme(theme){
+    document.documentElement.setAttribute('data-theme', theme);
+    const btn = document.getElementById('themeBtn');
+    if(btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+  async function toggleTheme(){
+    const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    await sSet('theme', next, false);
+  }
+
+  // ---------- completion logic ----------
+  function itemDone(item, dayData){
+    if(!dayData) return false;
+    if(item.type === 'count') return (dayData[item.key] || 0) >= item.target;
+    return !!dayData[item.key];
+  }
+  function isDone(items){
+    if(!items) return false;
+    const baseOK = TODAY_ITEMS.every(i => itemDone(i, items));
+    if(!baseOK) return false;
+    if(profile && profile.doubleSession) return itemDone(SECOND_SESSION, items);
+    return true;
+  }
+  function completedCount(items){
+    if(!items) return 0;
+    let n = 0;
+    TODAY_ITEMS.forEach(i => { if(itemDone(i, items)) n++; });
+    if(profile && profile.doubleSession && itemDone(SECOND_SESSION, items)) n++;
+    return n;
+  }
+  function totalCount(){ return TODAY_ITEMS.length + (profile && profile.doubleSession ? 1 : 0); }
+
+  function computeStreak(){
+    let streak = 0;
+    let cursor = new Date();
+    let key = fmt(cursor);
+    if(isDone(myDays[key])){ streak++; }
+    cursor.setDate(cursor.getDate()-1);
+    while(isDone(myDays[fmt(cursor)])){
+      streak++;
+      cursor.setDate(cursor.getDate()-1);
+    }
+    return streak;
+  }
+
+  function computeWeekCount(){
+    let count = 0;
+    let cursor = new Date();
+    for(let i=0;i<7;i++){
+      if(isDone(myDays[fmt(cursor)])) count++;
+      cursor.setDate(cursor.getDate()-1);
+    }
+    return count;
+  }
+
+  // ---------- boot ----------
+  async function boot(){
+    await loadTheme();
+    const p = await sJSON('profile', false, null);
+    if(!p || !p.agreedTerms || !p.name){
+      renderOnboarding();
+      showScreen('onboarding');
+      return;
+    }
+    profile = p;
+    myDays = await sJSON('my-days', false, {});
+    showScreen('main');
+    initMain();
+    maybeShowFunMessage();
+  }
+
+  function showScreen(which){
+    document.getElementById('boot').hidden = true;
+    document.getElementById('onboarding').hidden = which !== 'onboarding';
+    document.getElementById('mainScreen').hidden = which !== 'main';
+  }
+
+  // ---------- daily fun message ----------
+  async function maybeShowFunMessage(){
+    const lastSeen = await sGet('lastFunSeen', false);
+    const today = todayKey();
+    if(lastSeen === today) return;
+    const idx = dayOfYear() % FUN_MESSAGES.length;
+    const msg = FUN_MESSAGES[idx];
+    document.getElementById('funEmoji').textContent = msg.e;
+    document.getElementById('funTitle').textContent = msg.t;
+    document.getElementById('funModal').classList.add('show');
+    document.getElementById('funClose').onclick = async ()=>{
+      document.getElementById('funModal').classList.remove('show');
+      await sSet('lastFunSeen', today, false);
+    };
+  }
+
+  // ---------- milestones ----------
+  const MILESTONES = {
+    7:  {t:"One week down. Seven for seven.", e:"🎉"},
+    30: {t:"30 days deep — this is a lifestyle now.", e:"🔥"},
+    50: {t:"50 days. Two thirds there.", e:"💪"},
+    75: {t:"75 days. Challenge complete. Legendary.", e:"🏆"}
+  };
+  async function maybeShowMilestone(){
+    const dn = dayNumber();
+    if(!MILESTONES[dn]) return;
+    const seen = await sJSON('seenMilestones', false, []);
+    if(seen.includes(dn)) return;
+    const items = myDays[todayKey()] || {};
+    if(!isDone(items)) return; // only celebrate once today's list is actually complete
+    const m = MILESTONES[dn];
+    const modal = document.getElementById('milestoneModal');
+    document.getElementById('milestoneEmoji').textContent = m.e;
+    document.getElementById('milestoneTitle').textContent = m.t;
+    document.getElementById('milestoneSub').textContent = 'Day ' + dn + ' of 75';
+    modal.classList.add('show');
+    launchConfetti(modal);
+    document.getElementById('milestoneClose').onclick = async ()=>{
+      modal.classList.remove('show');
+      modal.querySelectorAll('.confettiPiece').forEach(p=>p.remove());
+      seen.push(dn);
+      await sSetJSON('seenMilestones', seen, false);
+    };
+  }
+  function launchConfetti(container){
+    const emojis = ['🎉','✨','🥳','⭐','🔥'];
+    for(let i=0;i<22;i++){
+      const span = document.createElement('span');
+      span.className = 'confettiPiece';
+      span.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      span.style.left = Math.random()*100 + '%';
+      span.style.fontSize = (14 + Math.random()*14) + 'px';
+      span.style.animationDuration = (2 + Math.random()*2) + 's';
+      span.style.animationDelay = (Math.random()*0.4) + 's';
+      container.appendChild(span);
+    }
+  }
+
+  // ---------- ONBOARDING ----------
+  function renderOnboarding(){
+    const el = document.getElementById('onboarding');
+    el.innerHTML = `
+      <button class="iconBtn obThemeBtn" id="obThemeBtn" type="button" aria-label="Toggle dark mode">🌙</button>
+      <div class="obCard" id="obStep1">
+        <h1>75 SOFT</h1>
+        <div class="obSub">TERMS &amp; CONDITIONS (THE FUN KIND)</div>
+        <ul class="terms">
+          <li>You will drink 3 litres of water a day. That means more bathroom breaks. We don't make the rules. We absolutely do. Sorry.</li>
+          <li>10,000 steps, daily, logged by you — we can't reach into your Apple Watch, no matter how much we'd like to.</li>
+          <li>10 pages of a self-help book. Falling asleep during the audiobook version does not count as "read."</li>
+          <li>No alcohol, no soft drink. Sparkling water is fine. It knows what it did right.</li>
+          <li>No added sugar or takeaway. Your fruit bowl is safe. Your secret biscuit stash and the delivery app icon are not.</li>
+          <li>One 45-minute workout. Non-negotiable. A second one exists only if you turn it on yourself — nobody else can do that for you.</li>
+          <li>Everyone on Soft Street can see whether your window lit up today. Nobody can touch your toggles but you.</li>
+        </ul>
+        <div class="agreeRow">
+          <input type="checkbox" id="agreeCheck" />
+          <label for="agreeCheck">I solemnly swear I will try, and I accept mild public shaming in the group chat if my window stays dark.</label>
+        </div>
+        <button class="obBtn" id="continueBtn" disabled type="button">Continue</button>
+      </div>
+    `;
+    document.getElementById('obThemeBtn').addEventListener('click', toggleTheme);
+    document.getElementById('agreeCheck').addEventListener('change', (e)=>{
+      document.getElementById('continueBtn').disabled = !e.target.checked;
+    });
+    document.getElementById('continueBtn').addEventListener('click', renderNameStep);
+  }
+
+  function renderNameStep(){
+    const el = document.getElementById('onboarding');
+    el.innerHTML = `
+      <button class="iconBtn obThemeBtn" id="obThemeBtn" type="button" aria-label="Toggle dark mode">🌙</button>
+      <div class="obCard" id="obStep2">
+        <h1>Nice. Welcome aboard.</h1>
+        <div class="obSub">ONE LAST THING</div>
+        <div class="obField">
+          <label for="nameInput">What should we call you on Soft Street?</label>
+          <input type="text" id="nameInput" maxlength="24" placeholder="e.g. Sam" autocomplete="off" />
+        </div>
+        <div class="obField">
+          <label>Who's sitting on your roof?</label>
+          <div class="petPicker">
+            <button type="button" class="petOption" id="petCat" data-pet="cat"><span class="petEmoji">🐱</span> Cat</button>
+            <button type="button" class="petOption selected" id="petDog" data-pet="dog"><span class="petEmoji">🐶</span> Dog</button>
+          </div>
+        </div>
+        <div class="obToggleCard">
+          <div>
+            <div class="t">Going for the double session?</div>
+            <div class="d">Adds a second 45-minute workout to your daily list. You can leave this off — plenty of houses on this street only do one.</div>
+          </div>
+          <button class="switch" id="doubleSwitch" type="button" role="switch" aria-checked="false" aria-label="Double session toggle"></button>
+        </div>
+        <button class="obBtn" id="startBtn" disabled type="button">Move in to Soft Street</button>
+      </div>
+    `;
+    document.getElementById('obThemeBtn').addEventListener('click', toggleTheme);
+    applyTheme(document.documentElement.getAttribute('data-theme') || 'light');
+    let doubleOn = false;
+    let petChoice = 'dog';
+    const nameInput = document.getElementById('nameInput');
+    const startBtn = document.getElementById('startBtn');
+    function checkValid(){ startBtn.disabled = nameInput.value.trim().length === 0; }
+    nameInput.addEventListener('input', checkValid);
+    nameInput.focus();
+    document.querySelectorAll('.petOption').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        petChoice = btn.dataset.pet;
+        document.querySelectorAll('.petOption').forEach(b=> b.classList.toggle('selected', b === btn));
+      });
+    });
+    document.getElementById('doubleSwitch').addEventListener('click', (e)=>{
+      doubleOn = !doubleOn;
+      e.target.classList.toggle('on', doubleOn);
+      e.target.setAttribute('aria-checked', String(doubleOn));
+    });
+    startBtn.addEventListener('click', async ()=>{
+      const name = nameInput.value.trim().slice(0,24);
+      if(!name) return;
+      startBtn.disabled = true;
+      startBtn.textContent = 'Setting up your house…';
+      const id = (crypto.randomUUID ? crypto.randomUUID() : 'id-' + Date.now() + '-' + Math.random().toString(16).slice(2));
+      profile = { id, name, doubleSession: doubleOn, pet: petChoice, joinedDate: todayKey(), agreedTerms: true };
+      myDays = {};
+      await sSetJSON('profile', profile, false);
+      await sSetJSON('my-days', myDays, false);
+      await registerOnStreet();
+      showScreen('main');
+      initMain();
+      maybeShowFunMessage();
+    });
+  }
+
+  async function registerOnStreet(){
+    const idx = await sJSON('board-index', true, {ids:[]});
+    if(!idx.ids.includes(profile.id)){
+      idx.ids.push(profile.id);
+      await sSetJSON('board-index', idx, true);
+    }
+    await writeBoardEntry();
+  }
+
+  async function writeBoardEntry(){
+    const key = todayKey();
+    const items = myDays[key] || {};
+    const entry = {
+      name: profile.name,
+      doubleSession: !!profile.doubleSession,
+      pet: profile.pet === 'cat' ? 'cat' : 'dog',
+      date: key,
+      completed: completedCount(items),
+      total: totalCount(),
+      allDone: isDone(items),
+      streak: computeStreak(),
+      weekCount: computeWeekCount(),
+      updatedAt: Date.now()
+    };
+    await sSetJSON('board:' + profile.id, entry, true);
+  }
+
+  // ---------- MAIN ----------
+  function initMain(){
+    const dn = dayNumber();
+    let headerDayText;
+    if(dn < 1) headerDayText = 'starts 6 Jul 2026';
+    else if(dn > 75) headerDayText = 'day 75/75 · done!';
+    else headerDayText = 'day ' + dn + '/75';
+    document.getElementById('whoAmI').textContent = profile.name + ' · ' + headerDayText;
+    applyTheme(document.documentElement.getAttribute('data-theme') || 'light');
+    document.querySelectorAll('.tab').forEach(btn=>{
+      btn.addEventListener('click', ()=> switchPanel(btn.dataset.panel));
+    });
+    document.getElementById('themeBtn').addEventListener('click', toggleTheme);
+    document.getElementById('helpBtn').addEventListener('click', ()=> toggleHelp(true));
+    document.getElementById('helpClose').addEventListener('click', ()=> toggleHelp(false));
+    document.getElementById('helpModal').addEventListener('click', (e)=>{ if(e.target.id === 'helpModal') toggleHelp(false); });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') toggleHelp(false); });
+
+    renderToday();
+    renderStreet();
+    renderRecipe();
+    renderFoods();
+    renderWeather();
+    renderChatPanel();
+    writeBoardEntry();
+
+    streetPollTimer = setInterval(()=>{ if(activePanel === 'street') loadAndRenderStreet(); }, 20000);
+    chatPollTimer = setInterval(()=>{ if(activePanel === 'chat') loadAndRenderChat(false); }, 8000);
+    document.addEventListener('visibilitychange', ()=>{
+      if(!document.hidden){
+        if(activePanel === 'street') loadAndRenderStreet();
+        if(activePanel === 'chat') loadAndRenderChat(false);
+      }
+    });
+  }
+
+  function switchPanel(name){
+    activePanel = name;
+    ['today','street','recipe','foods','weather','chat'].forEach(p=>{
+      document.getElementById('panel-'+p).classList.toggle('active', p === name);
+      document.getElementById('tabBtn-'+p).setAttribute('aria-selected', String(p===name));
+    });
+    if(name === 'street') loadAndRenderStreet();
+    if(name === 'chat') loadAndRenderChat(true);
+  }
+
+  function toggleHelp(show){ document.getElementById('helpModal').classList.toggle('show', show); }
+
+  // ---------- TODAY ----------
+  function sunArcSVG(percent){
+    const cx=60, cy=64, r=48;
+    const angle = Math.PI * (1 - percent/100);
+    const sx = cx + r*Math.cos(angle);
+    const sy = cy - r*Math.sin(angle);
+    return `
+      <svg width="120" height="72" viewBox="0 0 120 72" aria-hidden="true">
+        <path d="M ${cx-r} ${cy} A ${r} ${r} 0 0 1 ${cx+r} ${cy}" fill="none" stroke="var(--line)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M ${cx-r} ${cy} A ${r} ${r} 0 0 1 ${sx} ${sy}" fill="none" stroke="var(--gold)" stroke-width="3" stroke-linecap="round"/>
+        <line x1="${cx-r-4}" y1="${cy}" x2="${cx+r+4}" y2="${cy}" stroke="var(--line)" stroke-width="2"/>
+        <circle cx="${sx}" cy="${sy}" r="8" fill="var(--gold)"/>
+      </svg>`;
+  }
+
+  function renderToday(){
+    const key = todayKey();
+    const items = myDays[key] || {};
+    const yItems = myDays[yesterdayKey()];
+    const showMissedWarning = (yesterdayKey() >= CHALLENGE_START) && (todayKey() > CHALLENGE_START) && !isDone(yItems);
+    const complete = completedCount(items);
+    const total = totalCount();
+    const pct = total ? Math.round((complete/total)*100) : 0;
+    const streak = computeStreak();
+    const dNum = dayNumber();
+    const notStarted = dNum < 1;
+    const finished = dNum > 75;
+
+    let rows = TODAY_ITEMS.map(i => itemRowHTML(i, items)).join('');
+    if(profile.doubleSession){ rows += itemRowHTML(SECOND_SESSION, items); }
+
+    const el = document.getElementById('panel-today');
+    el.innerHTML = `
+      ${notStarted ? `
+      <div class="banner complete">
+        <span>🚀</span>
+        <span>75 Soft officially kicks off on <strong>Monday 6 July 2026</strong> — ${1-dNum} day${(1-dNum)===1?'':'s'} to go. Feel free to explore and practice in the meantime!</span>
+      </div>` : ''}
+      ${showMissedWarning ? `
+      <div class="banner">
+        <span>⚠️</span>
+        <span>Yesterday got away from you — that's alright, today's a clean slate. Every window on the street resets at midnight, yours included.</span>
+        <button class="dismiss" id="dismissWarn" type="button">dismiss</button>
+      </div>` : ''}
+      <div class="todayHead">
+        <div class="arcWrap">${sunArcSVG(pct)}</div>
+        <div class="meta">
+          <div class="dayLabel">${finished ? 'Challenge complete 🏆' : (notStarted ? 'Not started yet' : 'Day ' + dNum + ' of 75')}</div>
+          <div class="streakLine"><span class="flame">🔥</span> ${streak} day streak</div>
+          <div class="subtext">${complete}/${total} done today · ${pct}%</div>
+        </div>
+      </div>
+      <div class="checklist">${rows}</div>
+      <div class="doubleToggleRow">
+        <div>
+          <div class="t">Double session mode</div>
+          <div class="d">Adds a second 45-minute workout to your daily list. Change your mind any time.</div>
+        </div>
+        <button class="switch ${profile.doubleSession ? 'on' : ''}" id="doubleToggleMain" type="button" role="switch" aria-checked="${!!profile.doubleSession}" aria-label="Toggle double session"></button>
+      </div>
+      <p class="stepsNote">Steps are logged by hand — Apple Health and Apple Watch data can't be pulled into a browser-based app automatically. Check the Help (?) tab for why.</p>
+      <div class="noteField">
+        <label for="noteInput">Today's note <span>(private — only you see this)</span></label>
+        <textarea id="noteInput" maxlength="280" rows="2" placeholder="How'd today go?">${escapeHTML(items.note || '')}</textarea>
+      </div>
+      <div class="completeBadge ${isDone(items) ? 'show' : ''}" id="completeBadge">Nice work — every light is on. Soft Street can see you glowing. ☀️</div>
+    `;
+
+    if(showMissedWarning){
+      document.getElementById('dismissWarn').addEventListener('click', ()=>{
+        el.querySelector('.banner').remove();
+      });
+    }
+    el.querySelectorAll('.item[data-key]').forEach(rowEl=>{
+      const k = rowEl.dataset.key;
+      if(k === 'steps'){
+        const input = rowEl.querySelector('input');
+        input.addEventListener('change', ()=> onStepsChange(input.value));
+        input.addEventListener('blur', ()=> onStepsChange(input.value));
+      } else {
+        rowEl.querySelector('button.rowBtn').addEventListener('click', ()=> onToggleItem(k));
+      }
+    });
+    document.getElementById('doubleToggleMain').addEventListener('click', onToggleDoubleSession);
+    const noteInput = document.getElementById('noteInput');
+    let noteTimer = null;
+    noteInput.addEventListener('input', ()=>{
+      clearTimeout(noteTimer);
+      noteTimer = setTimeout(()=> onNoteChange(noteInput.value), 600);
+    });
+    noteInput.addEventListener('blur', ()=> onNoteChange(noteInput.value));
+
+    maybeShowMilestone();
+  }
+
+  function itemRowHTML(item, items){
+    if(item.type === 'count'){
+      const val = items[item.key] || 0;
+      const done = val >= item.target;
+      return `
+        <div class="item stepsRow ${done?'done':''}" data-key="${item.key}">
+          <div class="emoji">${item.emoji}</div>
+          <div class="label"><div class="t">${item.t}</div><div class="d">${item.d}</div></div>
+          <div class="stepsInputWrap">
+            <input type="number" min="0" step="100" inputmode="numeric" value="${val || ''}" placeholder="0" aria-label="${item.t} logged" />
+            <span>/ ${item.target.toLocaleString()}</span>
+          </div>
+          <div class="check">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </div>`;
+    }
+    const done = !!items[item.key];
+    return `
+      <div class="item ${done?'done':''}" data-key="${item.key}">
+        <div class="emoji">${item.emoji}</div>
+        <div class="label"><div class="t">${item.t}</div><div class="d">${item.d}</div></div>
+        <div class="check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <button class="rowBtn" type="button" aria-pressed="${done}" aria-label="Mark ${item.t} ${done?'incomplete':'complete'}"></button>
+      </div>`;
+  }
+
+  async function onToggleItem(key){
+    const dKey = todayKey();
+    if(!myDays[dKey]) myDays[dKey] = {};
+    myDays[dKey][key] = !myDays[dKey][key];
+    await sSetJSON('my-days', myDays, false);
+    renderToday();
+    writeBoardEntry();
+  }
+
+  async function onStepsChange(value){
+    const dKey = todayKey();
+    if(!myDays[dKey]) myDays[dKey] = {};
+    const num = Math.max(0, parseInt(value, 10) || 0);
+    myDays[dKey].steps = num;
+    await sSetJSON('my-days', myDays, false);
+    renderToday();
+    writeBoardEntry();
+  }
+
+  async function onNoteChange(value){
+    const dKey = todayKey();
+    if(!myDays[dKey]) myDays[dKey] = {};
+    myDays[dKey].note = value.slice(0, 280);
+    await sSetJSON('my-days', myDays, false);
+    // no re-render / board write needed — this is private and doesn't affect completion
+  }
+
+  async function onToggleDoubleSession(){
+    profile.doubleSession = !profile.doubleSession;
+    await sSetJSON('profile', profile, false);
+    renderToday();
+    writeBoardEntry();
+  }
+
+  // ---------- STREET ----------
+  function renderStreet(){
+    const el = document.getElementById('panel-street');
+    el.innerHTML = `
+      <p class="streetIntro">Every person on the challenge has a house here. Lights update the moment someone checks something off — nobody but them can flip their own switch.</p>
+      <div class="streetStats" id="streetStats"></div>
+      <div class="skyline" id="skylineWrap"><div class="skylineEmpty">Loading the street…</div></div>
+      <div class="legend">
+        <span><span class="dot" style="background:#7C8A79"></span> nothing yet today</span>
+        <span><span class="dot" style="background:#E0A73E;opacity:.7"></span> in progress</span>
+        <span><span class="dot" style="background:var(--gold)"></span> fully lit</span>
+      </div>
+    `;
+    loadAndRenderStreet();
+  }
+
+  async function loadAndRenderStreet(){
+    const idx = await sJSON('board-index', true, {ids:[]});
+    const wrap = document.getElementById('skylineWrap');
+    const statsWrap = document.getElementById('streetStats');
+    if(!wrap) return;
+    if(!idx.ids || idx.ids.length === 0){
+      wrap.innerHTML = '<div class="skylineEmpty">Nobody\'s moved in yet.</div>';
+      if(statsWrap) statsWrap.innerHTML = '';
+      return;
+    }
+    const today = todayKey();
+    const entries = await Promise.all(idx.ids.map(async id => {
+      const e = await sJSON('board:' + id, true, null);
+      return {id, e};
+    }));
+    const valid = entries.filter(x => x.e);
+    valid.sort((a,b)=> (b.e.streak||0) - (a.e.streak||0));
+
+    // ---- leaderboard stats ----
+    if(statsWrap){
+      const maxStreak = Math.max(0, ...valid.map(x => x.e.streak||0));
+      const streakLeaders = maxStreak > 0 ? valid.filter(x => (x.e.streak||0) === maxStreak).map(x=>x.e.name) : [];
+      const maxWeek = Math.max(0, ...valid.map(x => x.e.weekCount||0));
+      const weekLeaders = maxWeek > 0 ? valid.filter(x => (x.e.weekCount||0) === maxWeek).map(x=>x.e.name) : [];
+      statsWrap.innerHTML = `
+        <div class="statCard">
+          <div class="label">🔥 Longest streak</div>
+          <div class="value">${streakLeaders.length ? escapeHTML(streakLeaders.join(', ')) + ' · ' + maxStreak + ' day' + (maxStreak===1?'':'s') : 'Nobody yet'}</div>
+        </div>
+        <div class="statCard">
+          <div class="label">⭐ Most consistent this week</div>
+          <div class="value">${weekLeaders.length ? escapeHTML(weekLeaders.join(', ')) + ' · ' + maxWeek + '/7' : 'Nobody yet'}</div>
+        </div>
+      `;
+    }
+
+    // ---- nudge state for today ----
+    const nudgeMap = await sJSON('nudges-' + today, true, {});
+
+    wrap.innerHTML = valid.map(({id,e})=>{
+      const isToday = e.date === today;
+      const completed = isToday ? (e.completed||0) : 0;
+      const allDone = isToday && e.allDone;
+      let cls = 'window';
+      if(allDone) cls += ' all';
+      else if(completed > 0) cls += ' some';
+      const isYou = profile && id === profile.id;
+      const flame = (isToday && e.streak > 0) ? `<span class="flame">🔥${e.streak}</span>` : '';
+      const petEmoji = e.pet === 'cat' ? '🐱' : '🐶';
+      const alreadyNudged = !!(profile && nudgeMap[profile.id + '_' + id]);
+      const showNudge = !isYou && !allDone;
+      const nudgeBtn = `<button class="nudgeBtn ${showNudge ? '' : 'invisible'}" data-nudge-id="${id}" data-nudge-name="${escapeHTML(e.name||'friend')}" ${(!showNudge || alreadyNudged)?'disabled':''} type="button" tabindex="${showNudge?'0':'-1'}">${alreadyNudged ? 'nudged ✓' : '👋 nudge'}</button>`;
+      return `
+        <div class="house">
+          <div class="roof"><span class="pet">${petEmoji}</span>${flame}</div>
+          <div class="body"><div class="${cls}"></div></div>
+          <div class="houseName">${isYou ? '<span class="you">you</span> · ' : ''}${escapeHTML(e.name||'friend')}</div>
+          ${nudgeBtn}
+        </div>`;
+    }).join('');
+
+    wrap.querySelectorAll('.nudgeBtn').forEach(btn=>{
+      btn.addEventListener('click', ()=> sendNudge(btn.dataset.nudgeId, btn.dataset.nudgeName, btn));
+    });
+  }
+
+  async function sendNudge(toId, toName, btnEl){
+    if(!profile || toId === profile.id) return;
+    const dayKey = 'nudges-' + todayKey();
+    const map = await sJSON(dayKey, true, {});
+    const pairKey = profile.id + '_' + toId;
+    if(map[pairKey]) return;
+    map[pairKey] = true;
+    if(btnEl){ btnEl.disabled = true; btnEl.textContent = 'nudged ✓'; }
+    await sSetJSON(dayKey, map, true);
+    const list = await sJSON('chat-messages', true, []);
+    list.push({
+      id: Date.now() + '-' + Math.random().toString(16).slice(2),
+      userId: profile.id,
+      name: profile.name,
+      type: 'nudge',
+      content: toName,
+      ts: Date.now()
+    });
+    while(list.length > MAX_CHAT) list.shift();
+    await sSetJSON('chat-messages', list, true);
+    if(activePanel === 'chat') loadAndRenderChat(true);
+  }
+
+  // ---------- RECIPE ----------
+  function renderRecipe(){
+    showRecipe(RECIPES[dayOfYear() % RECIPES.length], true);
+  }
+  function showRecipe(r, isToday){
+    const el = document.getElementById('panel-recipe');
+    el.innerHTML = `
+      <div class="recipeCard">
+        <div class="recipeTag">${isToday ? "TODAY'S PICK" : "SURPRISE ME"}</div>
+        <div class="recipeTitle">${r.emoji} ${r.name}</div>
+        <div class="recipeMeta">${r.time} · serves ${r.serves}</div>
+        <div class="recipeCols">
+          <div>
+            <h4>Ingredients</h4>
+            <ul>${r.ing.map(i=>`<li>${i}</li>`).join('')}</ul>
+          </div>
+          <div>
+            <h4>Method</h4>
+            <ol>${r.steps.map(s=>`<li>${s}</li>`).join('')}</ol>
+          </div>
+        </div>
+        <div class="recipeBtns">
+          <button class="ghostBtn" id="surpriseBtn" type="button">🎲 Surprise me</button>
+          ${!isToday ? '<button class="ghostBtn" id="backBtn" type="button">Back to today\'s pick</button>' : ''}
+        </div>
+      </div>
+    `;
+    document.getElementById('surpriseBtn').addEventListener('click', ()=>{
+      const random = RECIPES[Math.floor(Math.random()*RECIPES.length)];
+      showRecipe(random, false);
+    });
+    const backBtn = document.getElementById('backBtn');
+    if(backBtn) backBtn.addEventListener('click', renderRecipe);
+  }
+
+  // ---------- FOODS ----------
+  function renderFoods(){
+    const el = document.getElementById('panel-foods');
+    const renderCol = (cats) => cats.map(c => `
+      <div class="foodsSubcat">
+        <h4>${escapeHTML(c.cat)}</h4>
+        <ul>${c.items.map(f=>`<li>${escapeHTML(f)}</li>`).join('')}</ul>
+      </div>`).join('');
+    el.innerHTML = `
+      <p class="foodsIntro">A quick reference for eating without added sugar or takeaway. When in doubt, ask: "did I make this myself, and does it have added sugar hiding in it?"</p>
+      <div class="foodsGrid">
+        <div class="foodsCol eat"><h3>✅ Generally fine</h3>${renderCol(FOOD_LIST.eat)}</div>
+        <div class="foodsCol avoid"><h3>🚫 Steer clear</h3>${renderCol(FOOD_LIST.avoid)}</div>
+      </div>
+    `;
+  }
+
+  // ---------- WEATHER ----------
+  function weatherEmoji(code){
+    if(code === 0) return '☀️';
+    if([1,2].includes(code)) return '🌤️';
+    if(code === 3) return '☁️';
+    if([45,48].includes(code)) return '🌫️';
+    if([51,53,55,56,57].includes(code)) return '🌦️';
+    if([61,63,65,66,67,80,81,82].includes(code)) return '🌧️';
+    if([71,73,75,77,85,86].includes(code)) return '❄️';
+    if([95,96,99].includes(code)) return '⛈️';
+    return '🌡️';
+  }
+  function weatherDesc(code){
+    const map = {0:'Clear sky',1:'Mostly clear',2:'Partly cloudy',3:'Overcast',45:'Foggy',48:'Foggy',
+      51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',
+      71:'Light snow',73:'Snow',75:'Heavy snow',80:'Rain showers',81:'Rain showers',82:'Heavy showers',
+      95:'Thunderstorm',96:'Thunderstorm',99:'Severe thunderstorm'};
+    return map[code] || 'Mixed conditions';
+  }
+  async function renderWeather(){
+    const el = document.getElementById('panel-weather');
+    el.innerHTML = `<div class="weatherCard"><p class="weatherLoading">Checking the sky over Brisbane…</p></div>`;
+    try{
+      const url = 'https://api.open-meteo.com/v1/forecast?latitude=-27.4698&longitude=153.0251&current=temperature_2m,apparent_temperature,wind_speed_10m,weather_code&daily=temperature_2m_max,temperature_2m_min,weather_code&timezone=Australia%2FBrisbane&forecast_days=4';
+      const res = await fetch(url);
+      if(!res.ok) throw new Error('bad response');
+      const data = await res.json();
+      const cur = data.current;
+      const daily = data.daily;
+      const days = ['Today','Tomorrow', ...daily.time.slice(2).map(d=> new Date(d+'T00:00:00').toLocaleDateString('en-AU',{weekday:'short'}))];
+      const forecastHTML = daily.time.map((d,i)=>`
+        <div class="forecastDay">
+          <div class="d">${i===0?'Today':(i===1?'Tmrw':new Date(d+'T00:00:00').toLocaleDateString('en-AU',{weekday:'short'}))}</div>
+          <div class="e">${weatherEmoji(daily.weather_code[i])}</div>
+          <div class="t">${Math.round(daily.temperature_2m_max[i])}° / ${Math.round(daily.temperature_2m_min[i])}°</div>
+        </div>`).join('');
+      el.innerHTML = `
+        <div class="weatherCard">
+          <div class="weatherTop">
+            <div class="weatherEmoji">${weatherEmoji(cur.weather_code)}</div>
+            <div>
+              <div class="weatherTemp">${Math.round(cur.temperature_2m)}°C</div>
+              <div class="weatherDesc">${weatherDesc(cur.weather_code)} in Brisbane · feels like ${Math.round(cur.apparent_temperature)}°C</div>
+            </div>
+          </div>
+          <div class="weatherSub">
+            <span>💨 ${Math.round(cur.wind_speed_10m)} km/h wind</span>
+            <span>🕓 updated just now</span>
+          </div>
+          <div class="forecastRow">${forecastHTML}</div>
+        </div>
+      `;
+    }catch(err){
+      el.innerHTML = `<div class="weatherCard"><p class="weatherErr">Couldn't reach the weather service right now — no API key is needed for this (it uses the free Open-Meteo service), so this is likely just a temporary connection hiccup. Try again in a bit.</p></div>`;
+    }
+  }
+
+  // ---------- CHAT ----------
+  function renderChatPanel(){
+    const el = document.getElementById('panel-chat');
+    el.innerHTML = `
+      <div class="chatWrap">
+        <div class="chatLog" id="chatLog"><div class="chatEmpty">Loading the chat…</div></div>
+        <div class="stickerTray" id="stickerTray">
+          ${STICKERS.map(s=>`<button type="button" data-sticker="${s}">${s}</button>`).join('')}
+        </div>
+        <div class="chatBar">
+          <button class="roundBtn" id="photoBtn" type="button" aria-label="Send a photo">📷</button>
+          <input type="file" id="photoInput" accept="image/*" hidden />
+          <input type="text" id="chatInput" placeholder="Cheer someone on…" maxlength="280" />
+          <button class="sendBtn" id="sendBtn" type="button">Send</button>
+        </div>
+      </div>
+    `;
+    document.getElementById('stickerTray').addEventListener('click', (e)=>{
+      const btn = e.target.closest('button[data-sticker]');
+      if(btn) sendMessage({type:'sticker', content: btn.dataset.sticker});
+    });
+    document.getElementById('sendBtn').addEventListener('click', sendTextMessage);
+    document.getElementById('chatInput').addEventListener('keydown', (e)=>{
+      if(e.key === 'Enter'){ sendTextMessage(); }
+    });
+    document.getElementById('photoBtn').addEventListener('click', ()=> document.getElementById('photoInput').click());
+    document.getElementById('photoInput').addEventListener('change', onPhotoChosen);
+    loadAndRenderChat(true);
+  }
+
+  function sendTextMessage(){
+    const input = document.getElementById('chatInput');
+    const text = input.value.trim();
+    if(!text) return;
+    input.value = '';
+    sendMessage({type:'text', content: text});
+  }
+
+  function onPhotoChosen(e){
+    const file = e.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev){
+      const img = new Image();
+      img.onload = function(){
+        const maxW = 420;
+        const scale = Math.min(1, maxW / img.width);
+        const canvas = document.createElement('canvas');
+        canvas.width = Math.round(img.width * scale);
+        canvas.height = Math.round(img.height * scale);
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        const dataUrl = canvas.toDataURL('image/jpeg', 0.6);
+        sendMessage({type:'image', content: dataUrl});
+      };
+      img.src = ev.target.result;
+    };
+    reader.readAsDataURL(file);
+    e.target.value = '';
+  }
+
+  async function sendMessage(msg){
+    const list = await sJSON('chat-messages', true, []);
+    list.push({
+      id: Date.now() + '-' + Math.random().toString(16).slice(2),
+      userId: profile.id,
+      name: profile.name,
+      type: msg.type,
+      content: msg.content,
+      ts: Date.now()
+    });
+    while(list.length > MAX_CHAT) list.shift();
+    await sSetJSON('chat-messages', list, true);
+    loadAndRenderChat(true);
+  }
+
+  async function loadAndRenderChat(forceScroll){
+    const log = document.getElementById('chatLog');
+    if(!log) return;
+    const list = await sJSON('chat-messages', true, []);
+    if(list.length === lastChatRenderCount && !forceScroll) return;
+    lastChatRenderCount = list.length;
+    if(list.length === 0){
+      log.innerHTML = '<div class="chatEmpty">No messages yet — say hi, or throw a sticker.</div>';
+      return;
+    }
+    log.innerHTML = list.map(m => renderMsg(m)).join('');
+    log.scrollTop = log.scrollHeight;
+  }
+
+  function renderMsg(m){
+    const mine = profile && m.userId === profile.id;
+    const who = mine ? '' : `<span class="who">${escapeHTML(m.name||'friend')}</span>`;
+    if(m.type === 'nudge'){
+      return `<div class="msg nudge">👋 ${escapeHTML(m.name||'someone')} nudged ${escapeHTML(m.content||'a friend')} to get moving</div>`;
+    }
+    if(m.type === 'sticker'){
+      return `<div class="msg sticker ${mine?'me':'other'}" title="${escapeHTML(m.name||'')}">${m.content}</div>`;
+    }
+    if(m.type === 'image'){
+      return `<div class="msg ${mine?'me':'other'}">${who}<img src="${m.content}" alt="shared photo" loading="lazy"/></div>`;
+    }
+    return `<div class="msg ${mine?'me':'other'}">${who}${escapeHTML(m.content)}</div>`;
+  }
+
+  function escapeHTML(s){
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  boot();
+})();
+</script>
+</body>
+</html>

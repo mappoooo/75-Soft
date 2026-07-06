@@ -204,7 +204,21 @@
   .noteField textarea:focus{ outline:none; border-color: var(--plum); }
 
   /* ---------- Street (community) ---------- */
-  .streetIntro{ font-size:13px; color: var(--muted); margin-bottom:18px; max-width:520px; }
+  .streetHeadRow{ display:flex; align-items:flex-start; justify-content:space-between; gap:14px; flex-wrap:wrap; margin-bottom:4px; }
+  .streetIntro{ font-size:13px; color: var(--muted); margin-bottom:18px; max-width:480px; flex:1; }
+  .streetHeadRow .ghostBtn{ flex-shrink:0; }
+
+  .houseIntro{ font-size:13px; color: var(--muted); margin-bottom:22px; max-width:520px; }
+  .housePreviewWrap{ display:flex; justify-content:center; padding:30px 0 26px; background: linear-gradient(to bottom, var(--sky-top), var(--paper-alt) 70%); border-radius: var(--radius); border:1px solid var(--line); margin-bottom:24px; }
+  .housePreviewHouse{ transform: scale(1.6); }
+  .houseColorField{ margin-bottom:22px; }
+  .houseColorField label{ display:block; font-family: var(--font-mono); font-size:11px; letter-spacing:.03em; text-transform:uppercase; color: var(--muted); margin-bottom:10px; }
+  .swatchRow{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
+  .swatch{ width:34px; height:34px; border-radius:8px; border:2px solid transparent; box-shadow: inset 0 0 0 1px var(--line); transition: transform .12s ease, border-color .12s ease; }
+  .swatch:hover{ transform: scale(1.08); }
+  .swatch.selected{ border-color: var(--plum); box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--plum); }
+  input[type="color"]{ width:56px; height:34px; border-radius:8px; border:1px solid var(--line); background:none; cursor:pointer; padding:2px; }
+  .houseSavedNote{ font-family: var(--font-mono); font-size:12px; color: var(--sage); margin-top:6px; }
   .skyline{
     display:flex; flex-wrap:wrap; gap:14px 10px; align-items:flex-end; padding: 20px 16px 16px;
     background: linear-gradient(to bottom, var(--sky-top), var(--paper-alt) 70%);
@@ -427,7 +441,7 @@
     <h3>Your PIN</h3>
     <p>Your house lives on the server, not just your phone, so it's safe even if your phone loses its memory of the site. If that happens, just tap "Already on Soft Street? Log back in" on the welcome screen and enter the name and PIN you signed up with.</p>
     <h3>Soft Street</h3>
-    <p>Every person on the challenge gets a little house, with the cat or dog they picked at sign-up sitting proudly on the roof. Make progress and the window flickers gold. Finish everything and it glows fully — everyone can see it, nobody can touch it but you. At the top you'll also see who's holding the longest streak and who's been most consistent this week.</p>
+    <p>Every person on the challenge gets a little house, with the cat or dog they picked at sign-up sitting proudly on the roof. Make progress and the window flickers gold. Finish everything and it glows fully — everyone can see it, nobody can touch it but you. At the top you'll also see who's holding the longest streak and who's been most consistent this week. Tap <strong>✏️ Edit my house</strong> at the top of this tab to pick your own wall and roof colours — only you can change yours.</p>
     <h3>Nudges</h3>
     <p>See a house that hasn't lit up yet? Tap "👋 nudge" underneath it to give them a gentle, public nudge in the chat. You can only nudge each person once per day, and you can't nudge yourself.</p>
     <h3>Private notes &amp; milestones</h3>
@@ -458,6 +472,15 @@
   </div>
 </div>
 
+<div class="modalOverlay" id="houseEditModal" role="dialog" aria-modal="true" aria-labelledby="houseEditTitle">
+  <div class="modalCard">
+    <button class="modalClose" id="houseEditClose" aria-label="Close">✕</button>
+    <h2 id="houseEditTitle">Edit my house</h2>
+    <p>This is exactly what everyone else sees on Soft Street — changes save automatically.</p>
+    <div id="houseEditBody"></div>
+  </div>
+</div>
+
 <script>
 (function(){
   "use strict";
@@ -473,6 +496,10 @@
   const SECOND_SESSION = {key:'exercise2', type:'check', emoji:'🔥', t:'Second 45-minute session', d:'Only counts if you\'ve switched this on.'};
   const STICKERS = ['🎉','🔥','💪','👏','🌊','📚','☀️','🏆'];
   const MAX_CHAT = 60;
+  const DEFAULT_WALL_COLOR = '#EEF0E6';
+  const DEFAULT_ROOF_COLOR = '#5E4463';
+  const WALL_PRESETS = ['#EEF0E6','#F6E3D6','#E3EEE6','#E6E9F6','#F6E6EE','#FBEFC2','#DDEAF0','#E8DEF2'];
+  const ROOF_PRESETS = ['#5E4463','#B4553F','#3F6B52','#8A6D2F','#3A5A78','#7A3E52','#4A4A4A','#2F5D4E'];
 
   const FUN_MESSAGES = [
     {t:"You avo got this.", e:"🥑"},
@@ -1004,6 +1031,8 @@
       name: profile.name,
       doubleSession: !!profile.doubleSession,
       pet: profile.pet === 'cat' ? 'cat' : 'dog',
+      houseColor: profile.houseColor || DEFAULT_WALL_COLOR,
+      roofColor: profile.roofColor || DEFAULT_ROOF_COLOR,
       date: key,
       completed: completedCount(items),
       total: totalCount(),
@@ -1031,7 +1060,9 @@
     document.getElementById('helpBtn').addEventListener('click', ()=> toggleHelp(true));
     document.getElementById('helpClose').addEventListener('click', ()=> toggleHelp(false));
     document.getElementById('helpModal').addEventListener('click', (e)=>{ if(e.target.id === 'helpModal') toggleHelp(false); });
-    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') toggleHelp(false); });
+    document.getElementById('houseEditClose').addEventListener('click', closeHouseEditor);
+    document.getElementById('houseEditModal').addEventListener('click', (e)=>{ if(e.target.id === 'houseEditModal') closeHouseEditor(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ toggleHelp(false); closeHouseEditor(); } });
 
     renderToday();
     renderStreet();
@@ -1225,7 +1256,10 @@
   function renderStreet(){
     const el = document.getElementById('panel-street');
     el.innerHTML = `
-      <p class="streetIntro">Every person on the challenge has a house here. Lights update the moment someone checks something off — nobody but them can flip their own switch.</p>
+      <div class="streetHeadRow">
+        <p class="streetIntro">Every person on the challenge has a house here. Lights update the moment someone checks something off — nobody but them can flip their own switch.</p>
+        <button class="ghostBtn" id="editHouseBtn" type="button">✏️ Edit my house</button>
+      </div>
       <div class="streetStats" id="streetStats"></div>
       <div class="skyline" id="skylineWrap"><div class="skylineEmpty">Loading the street…</div></div>
       <div class="legend">
@@ -1234,6 +1268,7 @@
         <span><span class="dot" style="background:var(--gold)"></span> fully lit</span>
       </div>
     `;
+    document.getElementById('editHouseBtn').addEventListener('click', openHouseEditor);
     loadAndRenderStreet();
   }
 
@@ -1286,13 +1321,15 @@
       const isYou = profile && id === profile.id;
       const flame = (isToday && e.streak > 0) ? `<span class="flame">🔥${e.streak}</span>` : '';
       const petEmoji = e.pet === 'cat' ? '🐱' : '🐶';
+      const wallColor = e.houseColor || DEFAULT_WALL_COLOR;
+      const roofColor = e.roofColor || DEFAULT_ROOF_COLOR;
       const alreadyNudged = !!(profile && nudgeMap[profile.id + '_' + id]);
       const showNudge = !isYou && !allDone;
       const nudgeBtn = `<button class="nudgeBtn ${showNudge ? '' : 'invisible'}" data-nudge-id="${id}" data-nudge-name="${escapeHTML(e.name||'friend')}" ${(!showNudge || alreadyNudged)?'disabled':''} type="button" tabindex="${showNudge?'0':'-1'}">${alreadyNudged ? 'nudged ✓' : '👋 nudge'}</button>`;
       return `
         <div class="house">
-          <div class="roof"><span class="pet">${petEmoji}</span>${flame}</div>
-          <div class="body"><div class="${cls}"></div></div>
+          <div class="roof" style="border-bottom-color:${roofColor}"><span class="pet">${petEmoji}</span>${flame}</div>
+          <div class="body" style="background:${wallColor}"><div class="${cls}"></div></div>
           <div class="houseName">${isYou ? '<span class="you">you</span> · ' : ''}${escapeHTML(e.name||'friend')}</div>
           ${nudgeBtn}
         </div>`;
@@ -1433,6 +1470,96 @@
     }catch(err){
       el.innerHTML = `<div class="weatherCard"><p class="weatherErr">Couldn't reach the weather service right now — no API key is needed for this (it uses the free Open-Meteo service), so this is likely just a temporary connection hiccup. Try again in a bit.</p></div>`;
     }
+  }
+
+  // ---------- HOUSE CUSTOMIZATION ----------
+  function openHouseEditor(){
+    renderHouseEditor();
+    document.getElementById('houseEditModal').classList.add('show');
+  }
+  function closeHouseEditor(){
+    document.getElementById('houseEditModal').classList.remove('show');
+  }
+  function renderHouseEditor(){
+    const el = document.getElementById('houseEditBody');
+    const wall = profile.houseColor || DEFAULT_WALL_COLOR;
+    const roof = profile.roofColor || DEFAULT_ROOF_COLOR;
+    const petEmoji = profile.pet === 'cat' ? '🐱' : '🐶';
+    el.innerHTML = `
+      <div class="housePreviewWrap">
+        <div class="house housePreviewHouse">
+          <div class="roof" id="previewRoof" style="border-bottom-color:${roof}"><span class="pet">${petEmoji}</span></div>
+          <div class="body" id="previewBody" style="background:${wall}"><div class="window all"></div></div>
+          <div class="houseName"><span class="you">you</span> · ${escapeHTML(profile.name)}</div>
+        </div>
+      </div>
+      <div class="houseColorField">
+        <label>Wall colour</label>
+        <div class="swatchRow" id="wallSwatches">
+          ${WALL_PRESETS.map(c=>`<button type="button" class="swatch ${c.toLowerCase()===wall.toLowerCase()?'selected':''}" style="background:${c}" data-color="${c}" aria-label="Wall colour ${c}"></button>`).join('')}
+        </div>
+        <input type="color" id="wallCustom" value="${wall}" />
+      </div>
+      <div class="houseColorField">
+        <label>Roof colour</label>
+        <div class="swatchRow" id="roofSwatches">
+          ${ROOF_PRESETS.map(c=>`<button type="button" class="swatch ${c.toLowerCase()===roof.toLowerCase()?'selected':''}" style="background:${c}" data-color="${c}" aria-label="Roof colour ${c}"></button>`).join('')}
+        </div>
+        <input type="color" id="roofCustom" value="${roof}" />
+      </div>
+      <p class="houseSavedNote" id="houseSavedNote" hidden>Saved ✓ — updating your house on the street now.</p>
+    `;
+
+    function applyPreview(newWall, newRoof){
+      document.getElementById('previewRoof').style.borderBottomColor = newRoof;
+      document.getElementById('previewBody').style.background = newWall;
+    }
+    async function saveHouseColors(newWall, newRoof){
+      profile.houseColor = newWall;
+      profile.roofColor = newRoof;
+      await sSetJSON(profileKey(profile.id, 'profile'), profile, true);
+      await writeBoardEntry();
+      const note = document.getElementById('houseSavedNote');
+      if(note){
+        note.hidden = false;
+        clearTimeout(saveHouseColors._t);
+        saveHouseColors._t = setTimeout(()=>{ if(note) note.hidden = true; }, 2200);
+      }
+      if(activePanel === 'street') loadAndRenderStreet();
+    }
+
+    document.getElementById('wallSwatches').addEventListener('click', (e)=>{
+      const btn = e.target.closest('.swatch');
+      if(!btn) return;
+      const c = btn.dataset.color;
+      document.getElementById('wallCustom').value = c;
+      document.querySelectorAll('#wallSwatches .swatch').forEach(s=> s.classList.toggle('selected', s === btn));
+      applyPreview(c, document.getElementById('roofCustom').value);
+      saveHouseColors(c, document.getElementById('roofCustom').value);
+    });
+    document.getElementById('roofSwatches').addEventListener('click', (e)=>{
+      const btn = e.target.closest('.swatch');
+      if(!btn) return;
+      const c = btn.dataset.color;
+      document.getElementById('roofCustom').value = c;
+      document.querySelectorAll('#roofSwatches .swatch').forEach(s=> s.classList.toggle('selected', s === btn));
+      applyPreview(document.getElementById('wallCustom').value, c);
+      saveHouseColors(document.getElementById('wallCustom').value, c);
+    });
+    document.getElementById('wallCustom').addEventListener('input', (e)=>{
+      applyPreview(e.target.value, document.getElementById('roofCustom').value);
+    });
+    document.getElementById('wallCustom').addEventListener('change', (e)=>{
+      document.querySelectorAll('#wallSwatches .swatch').forEach(s=> s.classList.remove('selected'));
+      saveHouseColors(e.target.value, document.getElementById('roofCustom').value);
+    });
+    document.getElementById('roofCustom').addEventListener('input', (e)=>{
+      applyPreview(document.getElementById('wallCustom').value, e.target.value);
+    });
+    document.getElementById('roofCustom').addEventListener('change', (e)=>{
+      document.querySelectorAll('#roofSwatches .swatch').forEach(s=> s.classList.remove('selected'));
+      saveHouseColors(document.getElementById('wallCustom').value, e.target.value);
+    });
   }
 
   // ---------- CHAT ----------
